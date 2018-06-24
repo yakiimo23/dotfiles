@@ -1,50 +1,33 @@
-if &compatible
-  set nocompatible               " Be iMproved
-endif
+""""""""""""""""""""""""""""""
+" プラグインのセットアップ
+""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
 
-" Required:
-set runtimepath+=/Users/charlie/.cache/dein/repos/github.com/Shougo/dein.vim
+" Color scheme: One Dark
+Plug 'joshdick/onedark.vim'
+" ステータスバー
+Plug 'itchyny/lightline.vim'
+" tree 表示
+Plug 'scrooloose/nerdtree'
+" 行末の半角スペースを可視化
+Plug 'bronson/vim-trailing-whitespace'
+" インデントの空白表示
+Plug 'Yggdroot/indentLine'
+" 自動補完
+Plug 'Shougo/deoplete.nvim'
+" Rubyの自動補完
+Plug 'Shougo/deoplete-rct'
+" endの自動挿入
+Plug 'tpope/vim-endwise'
+" editorconfig
+Plug 'editorconfig/editorconfig-vim'
+" 検索ツール
+Plug 'junegunn/fzf.vim'
 
-" Required:
-if dein#load_state('/Users/charlie/.cache/dein')
-  call dein#begin('/Users/charlie/.cache/dein')
+call plug#end()
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('/Users/charlie/.cache/dein/repos/github.com/Shougo/dein.vim')
-
-  " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('joshdick/onedark.vim')
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('vim-ruby/vim-ruby')
-  call dein#add('Yggdroot/indentLine')
-  call dein#add('bronson/vim-trailing-whitespace')
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('Shougo/deoplete-rct')
-  call dein#add('tpope/vim-endwise')
-  call dein#add('editorconfig/editorconfig-vim')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('junegunn/fzf.vim')
-
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
-
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
-
-" Required:
-filetype plugin indent on
 syntax enable
 syntax on
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
 
 "Credit joshdick
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
