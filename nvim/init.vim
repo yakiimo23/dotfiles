@@ -23,6 +23,12 @@ Plug 'tpope/vim-endwise'
 Plug 'editorconfig/editorconfig-vim'
 " 検索ツール
 Plug 'junegunn/fzf.vim'
+" コメントアウト
+Plug 'tomtom/tcomment_vim'
+" インデントガイド
+Plug 'nathanaelkane/vim-indent-guides'
+" ファイル検索
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -53,7 +59,7 @@ let g:lightline = {
 
 let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_leadingSpaceChar = '·'
-
+let g:indent_guides_enable_on_vim_startup = 1
 let g:deoplete#enable_at_startup = 1
 
 set number
@@ -62,6 +68,7 @@ set title
 set mouse=a
 set showmatch
 set smartindent
+set autoindent
 set ignorecase
 set smartcase
 set wrapscan
@@ -70,14 +77,57 @@ set hlsearch
 set fenc=utf-8
 set autoread
 set showcmd
+set wildmenu
 set cursorline
+set hidden
 set list
 set listchars=tab:\▸\-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set expandtab
 set tabstop=2
+set smarttab
 set shiftwidth=2
 set ruler
 set laststatus=2
 set nobackup
 set noswapfile
 set completeopt+=noinsert
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline+=%{fugitive#statusline()}
+
+" http://inari.hatenablog.com/entry/2014/05/05/231307
+"""""""""""""""""""""""""""""""
+" 全角スペースの表示
+"""""""""""""""""""""""""""""""
+function! ZenkakuSpace()
+  highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+endfunction
+
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter,BufRead * let w:m1=matchadd('ZenkakuSpace', '　')
+  augroup END
+  call ZenkakuSpace()
+endif
+
+""""""""""""""""""""""""""""""
+" 最後のカーソル位置を復元する
+""""""""""""""""""""""""""""""
+if has("autocmd")
+  autocmd BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
+endif
+
+""""""""""""""""""""""""""""""
+" 自動的に閉じ括弧を入力
+"""""""""""""""""""""""""""""""
+imap { {}<LEFT>
+imap [ []<LEFT>
+imap ( ()<LEFT>
+imap " ""<LEFT>
+imap ' ''<LEFT>
+
+filetype on
