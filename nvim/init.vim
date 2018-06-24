@@ -130,4 +130,6 @@ imap ( ()<LEFT>
 imap " ""<LEFT>
 imap ' ''<LEFT>
 
+nnoremap <silent><C-\> :NERDTreeToggle<CR>
+
 filetype on
