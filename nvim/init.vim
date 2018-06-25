@@ -31,6 +31,16 @@ Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'ctrlpvim/ctrlp.vim'
 " ファイルオープン
 Plug 'Shougo/unite.vim'
+" grep
+Plug 'Sixeight/unite-grep'
+" rails
+Plug 'basyura/unite-rails'
+" outline
+Plug 'Shougo/unite-outline'
+" ファイルオープン
+" Plug 'ctrlpvim/ctrlp.vim'
+" セッション
+Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
 
 call plug#end()
 
@@ -61,6 +71,7 @@ let g:lightline = {
 
 let g:indentLine_leadingSpaceEnabled=1
 let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_char = ''
 let g:indent_guides_enable_on_vim_startup = 1
 let g:deoplete#enable_at_startup = 1
 
@@ -95,6 +106,8 @@ set noswapfile
 set completeopt+=noinsert
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set statusline+=%{fugitive#statusline()}
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set timeoutlen-=300
 
 """"""""""""""""""""""""""""""
 " Unite.vimの設定
@@ -109,6 +122,16 @@ noremap <C-N> :Unite -buffer-name=file file<CR>
 noremap <C-Z> :Unite file_mru<CR>
 " sourcesを「今開いているファイルのディレクトリ」とする
 noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+" unite-rails
+noremap :rc :<C-u>Unite rails/controller<CR>
+noremap :rm :<C-u>Unite rails/model<CR>
+noremap :rv :<C-u>Unite rails/view<CR>
+noremap :rh :<C-u>Unite rails/helper<CR>
+noremap :rs :<C-u>Unite rails/stylesheet<CR>
+noremap :rj :<C-u>Unite rails/javascript<CR>
+noremap :rr :<C-u>Unite rails/route<CR>
+noremap :rg :<C-u>Unite rails/gemfile<CR>
+noremap :rt :<C-u>Unite rails/spec<CR>
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
@@ -148,12 +171,39 @@ endif
 
 """"""""""""""""""""""""""""""
 " 自動的に閉じ括弧を入力
-"""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>
-imap " ""<LEFT>
-imap ' ''<LEFT>
+
+""""""""""""""""""""""""""""""
+" セッションの設定
+""""""""""""""""""""""""""""""
+" 現在のディレクトリ直下の .vimsessions/ を取得
+let s:local_session_directory = xolox#misc#path#merge(getcwd(), '.vimsessions')
+" 存在すれば
+if isdirectory(s:local_session_directory)
+  " session保存ディレクトリをそのディレクトリの設定
+  let g:session_directory = s:local_session_directory
+  " vimを辞める時に自動保存
+  let g:session_autosave = 'yes'
+  " 引数なしでvimを起動した時にsession保存ディレクトリのdefault.vimを開く
+  let g:session_autoload = 'yes'
+  " 1分間に1回自動保存
+  let g:session_autosave_periodic = 1
+else
+  let g:session_autosave = 'no'
+  let g:session_autoload = 'no'
+endif
+unlet s:local_session_directory
+
+"""""""""""""""""""""""""""""
+" CtrlPの設定
+"""""""""""""""""""""""""""""
+"let g:ctrlp_custom_ignore = {
+"  \ 'dir': '\.git$\|log\|node_modules\|tmp$'
+"  \ }
+"let g:ctrlp_max_height = 30
 
 nnoremap <silent><C-\> :NERDTreeToggle<CR>
 
