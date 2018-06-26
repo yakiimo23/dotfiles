@@ -86,6 +86,7 @@ let g:indentLine_char = ''
 let g:indent_guides_enable_on_vim_startup = 1
 let g:deoplete#enable_at_startup = 1
 
+set background=dark
 set number
 set clipboard=unnamed
 set title
