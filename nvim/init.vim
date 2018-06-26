@@ -43,6 +43,8 @@ Plug 'Shougo/unite-outline'
 " Plug 'ctrlpvim/ctrlp.vim'
 " セッション
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
+" vim-tags
+Plug 'szw/vim-tags'
 
 call plug#end()
 
@@ -87,6 +89,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:deoplete#enable_at_startup = 1
 
 set background=dark
+set tags=~/.tags
 set number
 set clipboard=unnamed
 set title
