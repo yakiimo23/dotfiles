@@ -45,6 +45,8 @@ Plug 'Shougo/unite-outline'
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
 " vim-tags
 Plug 'szw/vim-tags'
+" j k の速度アップ
+Plug 'rhysd/accelerated-jk'
 
 call plug#end()
 
@@ -221,5 +223,11 @@ unlet s:local_session_directory
 "let g:ctrlp_max_height = 30
 
 nnoremap <silent><C-\> :NERDTreeToggle<CR>
+
+"""""""""""""""""""""""""""""
+" j k の速度アップ
+"""""""""""""""""""""""""""""
+nmap j <Plug>(accelerated_jk_gj)
+nmap k <Plug>(accelerated_jk_gk)
 
 filetype on
