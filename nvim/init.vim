@@ -180,7 +180,7 @@ imap ( ()<LEFT>
 " セッションの設定
 """"""""""""""""""""""""""""""
 " 現在のディレクトリ直下の .vimsessions/ を取得
-let s:local_session_directory = xolox#misc#path#merge(getcwd(), '.vimsessions')
+let s:local_session_directory = xolox#misc#path#merge(getcwd(), '~/.vimsessions')
 " 存在すれば
 if isdirectory(s:local_session_directory)
   " session保存ディレクトリをそのディレクトリの設定
