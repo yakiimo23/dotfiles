@@ -7,6 +7,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'joshdick/onedark.vim'
 " ステータスバー
 Plug 'itchyny/lightline.vim'
+" branch表示用
+Plug 'tpope/vim-fugitive'
 " tree 表示
 Plug 'scrooloose/nerdtree'
 " 行末の半角スペースを可視化
@@ -66,7 +68,16 @@ endif
 
 colorscheme onedark
 let g:lightline = {
-\ 'colorscheme': 'onedark',
+\ 'colorscheme': 'wombat',
+\ 'active': {
+\   'left': [
+\     ['mode', 'paste'],
+\     ['gitbranch', 'readonly', 'filename', 'modified']
+\   ],
+\ },
+\ 'component_function': {
+\   'gitbranch': 'fugitive#head'
+\ }
 \ }
 
 let g:indentLine_leadingSpaceEnabled=1
