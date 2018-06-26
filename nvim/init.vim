@@ -151,6 +151,8 @@ noremap :rj :<C-u>Unite rails/javascript<CR>
 noremap :rr :<C-u>Unite rails/route<CR>
 noremap :rg :<C-u>Unite rails/gemfile<CR>
 noremap :rt :<C-u>Unite rails/spec<CR>
+" .gitを基準に検索
+nnoremap <silent> ;@  :<C-u>Unite file_rec/async:!<CR>
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
