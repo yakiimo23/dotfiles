@@ -45,6 +45,8 @@ Plug 'Shougo/unite-outline'
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
 " vim-tags
 Plug 'szw/vim-tags'
+" 行に変更差分表示
+Plug 'airblade/vim-gitgutter'
 " j k の速度アップ
 Plug 'rhysd/accelerated-jk'
 
