@@ -1,0 +1,17 @@
+[user]
+  name = charlie
+  email = email
+[alias]
+  st = status
+  co = checkout
+  br = branch
+  cm = commit
+[commit]
+  template = /path/.commit_template
+[ghq]
+  root = /Users/charlie/Develop
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
