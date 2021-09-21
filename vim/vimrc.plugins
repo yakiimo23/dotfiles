@@ -1,0 +1,71 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'sheerun/vim-polyglot'
+Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-endwise'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tomtom/tcomment_vim'
+Plug 'luochen1990/rainbow'
+Plug 'airblade/vim-gitgutter'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'elzr/vim-json'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'rust-lang/rust.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'lighttiger2505/deoplete-vim-lsp'
+Plug 'zxqfl/tabnine-vim'
+Plug 'markonm/traces.vim'
+Plug 'k0kubun/vim-open-github'
+
+call plug#end()
+
+let g:fzf_layout = { 'down': '80%' }
+let g:airline_theme = 'onedark'
+let g:rainbow_active = 1
+let g:deoplete#enable_at_startup = 1
+let g:rustfmt_autosave = 1
+
+" deoplete
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
+endfunction
+
+" NERDTree
+nnoremap <silent><C-\> :NERDTreeToggle<CR>
+let g:NERDTreeShowHidden=1
+
+" List Symbol
+nnoremap <C-s> :LspDocumentSymbol<Return>
+
+" Multi Cursor
+let g:VM_maps = {}
+let g:VM_maps["Select Cursor Down"] = '<C-j>'      " start selecting down
+let g:VM_maps["Select Cursor Up"]   = '<C-k>'        " start selecting up
+
+" RipgrepFzf config
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+
+nnoremap <C-g> :Rg<Space>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <C-h> :History<CR>
