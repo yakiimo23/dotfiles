@@ -6,6 +6,7 @@ return require('packer').startup(function()
 
   -- colorscheme
   use { 'ulwlu/elly.vim', opt = true }
+  use { 'morhetz/gruvbox', opt = true }
 
   -- finder
   use { 'lambdalisue/fern.vim' }

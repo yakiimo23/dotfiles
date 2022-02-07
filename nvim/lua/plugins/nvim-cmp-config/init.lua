@@ -60,34 +60,34 @@ tabnine:setup({
 })
 
 -- formattings
-local lspkind = require('lspkind')
-local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "ﴯ",
-  Interface = "",
-  Module = "",
-  Property = "ﰠ",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = ""
-}
+-- local lspkind = require('lspkind')
+-- local kind_icons = {
+--   Text = "",
+--   Method = "",
+--   Function = "",
+--   Constructor = "",
+--   Field = "",
+--   Variable = "",
+--   Class = "ﴯ",
+--   Interface = "",
+--   Module = "",
+--   Property = "ﰠ",
+--   Unit = "",
+--   Value = "",
+--   Enum = "",
+--   Keyword = "",
+--   Snippet = "",
+--   Color = "",
+--   File = "",
+--   Reference = "",
+--   Folder = "",
+--   EnumMember = "",
+--   Constant = "",
+--   Struct = "",
+--   Event = "",
+--   Operator = "",
+--   TypeParameter = ""
+-- }
 local source_mapping = {
   buffer = "[Buffer]",
   nvim_lsp = "[LSP]",
@@ -95,18 +95,34 @@ local source_mapping = {
   cmp_tabnine = "[TN]",
   path = "[Path]",
 }
+-- cmp.setup {
+--   formatting = {
+--     format = function(entry, vim_item)
+--       vim_item.kind = lspkind.presets.default[vim_item.kind]
+--       local menu = source_mapping[entry.source.name]
+--       if entry.source.name == 'cmp_tabnine' then
+--         if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+--           menu = entry.completion_item.data.detail .. ' ' .. menu
+--         end
+--         vim_item.kind = ''
+--       end
+--       vim_item.menu = menu
+--       return vim_item
+--     end
+--   },
+-- }
 cmp.setup {
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = lspkind.presets.default[vim_item.kind]
-      local menu = source_mapping[entry.source.name]
-      if entry.source.name == 'cmp_tabnine' then
-        if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-          menu = entry.completion_item.data.detail .. ' ' .. menu
-        end
-        vim_item.kind = ''
-      end
-      vim_item.menu = menu
+      -- Source
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[LaTeX]",
+        cmp_tabnine = "[TN]",
+      })[entry.source.name]
       return vim_item
     end
   },

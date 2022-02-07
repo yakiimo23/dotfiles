@@ -14,7 +14,7 @@ end
 require('config')
 
 ------------------------------ OPTIONS ------------------------------
-cmd 'colorscheme elly'
+cmd 'colorscheme gruvbox'
 cmd 'language en_US.UTF-8'
 
 opt.termguicolors = true

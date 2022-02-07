@@ -126,6 +126,12 @@ _G.packer_plugins = {
     path = "/Users/charlie/.local/share/nvim/site/pack/packer/start/fern.vim",
     url = "https://github.com/lambdalisue/fern.vim"
   },
+  gruvbox = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/charlie/.local/share/nvim/site/pack/packer/opt/gruvbox",
+    url = "https://github.com/morhetz/gruvbox"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/charlie/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
