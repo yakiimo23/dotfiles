@@ -40,6 +40,7 @@ opt.cmdheight = 2
 opt.updatetime = 300
 opt.shortmess = opt.shortmess + 'c'
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
+opt.laststatus = 3
 
 ------------------------------ MAPPINGS ------------------------------
 

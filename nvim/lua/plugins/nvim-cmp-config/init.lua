@@ -55,6 +55,7 @@ tabnine:setup({
   sort = true;
   run_on_every_keystroke = true;
   snippet_placeholder = '..';
+  show_prediction_strength = true;
 })
 
 -- formattings
