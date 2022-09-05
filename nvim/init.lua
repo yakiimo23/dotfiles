@@ -67,3 +67,5 @@ map('', 'sl', '<C-w>l')
 -- Copy Relative Path
 map('n', 'rp', ':let @+ = expand("%")<CR>')
 
+-- Terminal mode
+map('t', '<Esc>', '<C-\\><C-n>')
