@@ -45,6 +45,7 @@ return require('packer').startup(function()
   use { 'hrsh7th/cmp-path' }
   use { 'hrsh7th/cmp-cmdline' }
   use { 'onsails/lspkind-nvim' }
+  use { 'zbirenbaum/copilot-cmp', module = 'copilot_cmp' }
   use { 'github/copilot.vim' }
 
   -- telescope
