@@ -7,6 +7,16 @@ return require('packer').startup(function()
   -- colorscheme
   use { 'morhetz/gruvbox', opt = true }
 
+  use { 'editorconfig/editorconfig-vim' }
+  use { 'windwp/nvim-autopairs' }
+  use { 'ntpeters/vim-better-whitespace' }
+  use { 'antoinemadec/FixCursorHold.nvim' }
+  use { 'tpope/vim-surround' }
+  use { 'tpope/vim-commentary' }
+
+  if vim.g.vscode then return nil end
+
+  -- Only Neovim
   -- finder
   use {
     'kyazdani42/nvim-tree.lua',
@@ -14,13 +24,7 @@ return require('packer').startup(function()
       'kyazdani42/nvim-web-devicons'
     }
   }
-  use { 'antoinemadec/FixCursorHold.nvim' }
 
-  use { 'ntpeters/vim-better-whitespace' }
-  use { 'editorconfig/editorconfig-vim' }
-  use { 'windwp/nvim-autopairs' }
-  use { 'tpope/vim-surround' }
-  use { 'tpope/vim-commentary' }
   use { 'lewis6991/gitsigns.nvim', tag = 'release' }
   use {
     'tyru/open-browser-github.vim',
