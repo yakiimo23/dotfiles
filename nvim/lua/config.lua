@@ -1,5 +1,4 @@
 require('plugins')
--- require('plugins.fern-config')
 require('plugins.gitsigns-config')
 require('plugins.lualine-config')
 require('plugins.nvim-autopairs-config')

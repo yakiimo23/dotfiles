@@ -8,7 +8,6 @@ return require('packer').startup(function()
   use { 'morhetz/gruvbox', opt = true }
 
   -- finder
-  -- use { 'lambdalisue/fern.vim' }
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
