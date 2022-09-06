@@ -26,10 +26,7 @@ return require('packer').startup(function()
   }
 
   use { 'lewis6991/gitsigns.nvim', tag = 'release' }
-  use {
-    'tyru/open-browser-github.vim',
-    requires = { 'tyru/open-browser.vim', opt = true }
-  }
+  use { 'tyru/open-browser-github.vim', requires = 'tyru/open-browser.vim' }
 
   -- LSP
   use { 'neovim/nvim-lspconfig' }
