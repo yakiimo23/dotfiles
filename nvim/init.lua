@@ -14,7 +14,7 @@ end
 require('config')
 
 ------------------------------ OPTIONS ------------------------------
-cmd 'colorscheme gruvbox'
+-- cmd 'colorscheme onedark'
 cmd 'language en_US.UTF-8'
 
 opt.termguicolors = true
@@ -64,8 +64,11 @@ map('', 'sk', '<C-w>k')
 map('', 'sj', '<C-w>j')
 map('', 'sl', '<C-w>l')
 
+-- Split new terminal window
+-- map('', 'T', ':split | wincmd j | resize -10 | terminal<CR>')
+
 -- Copy Relative Path
 map('n', 'rp', ':let @+ = expand("%")<CR>')
 
 -- Terminal mode
-map('t', '<Esc>', '<C-\\><C-n>')
+map('t', '<C-w>[', '<C-\\><C-n>')

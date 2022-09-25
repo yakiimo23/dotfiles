@@ -6,6 +6,12 @@ return require('packer').startup(function()
 
   -- colorscheme
   use { 'morhetz/gruvbox', opt = true }
+  use {
+    'navarasu/onedark.nvim',
+    config = function()
+      require('onedark').load()
+    end
+  }
 
   use { 'editorconfig/editorconfig-vim' }
   use { 'windwp/nvim-autopairs' }
@@ -13,6 +19,7 @@ return require('packer').startup(function()
   use { 'antoinemadec/FixCursorHold.nvim' }
   use { 'tpope/vim-surround' }
   use { 'tpope/vim-commentary' }
+  use { 'mg979/vim-visual-multi' }
 
   if vim.g.vscode then return nil end
 
@@ -25,8 +32,10 @@ return require('packer').startup(function()
     }
   }
 
+  -- Git
   use { 'lewis6991/gitsigns.nvim', tag = 'release' }
   use { 'tyru/open-browser-github.vim', requires = 'tyru/open-browser.vim' }
+  use { 'akinsho/toggleterm.nvim', tag = '*' }
 
   -- LSP
   use { 'neovim/nvim-lspconfig' }
@@ -42,7 +51,14 @@ return require('packer').startup(function()
   use { 'hrsh7th/cmp-path' }
   use { 'hrsh7th/cmp-cmdline' }
   use { 'onsails/lspkind-nvim' }
-  use { 'zbirenbaum/copilot-cmp', module = 'copilot_cmp' }
+  -- 使えない
+  -- use {
+  --   'zbirenbaum/copilot-cmp',
+  --   after = { 'copilot.lua' },
+  --   config = function()
+  --     require('copilot_cmp').setup()
+  --   end
+  -- }
   use { 'github/copilot.vim' }
 
   -- telescope
@@ -73,6 +89,10 @@ return require('packer').startup(function()
 
   -- syntax highlight
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'p00f/nvim-ts-rainbow' }
+
+  -- Quick Fix
+  use { 'kevinhwang91/nvim-bqf' }
 
   -- save session
   use {
