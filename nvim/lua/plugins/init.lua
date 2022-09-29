@@ -39,7 +39,10 @@ return require('packer').startup(function()
 
   -- LSP
   use { 'neovim/nvim-lspconfig' }
-  use { 'williamboman/nvim-lsp-installer' }
+  use { "williamboman/mason.nvim" }
+  use { "williamboman/mason-lspconfig.nvim" }
+  use { 'jose-elias-alvarez/null-ls.nvim' }
+  use { 'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons' }
 
   -- auto completion
   use { 'hrsh7th/nvim-cmp' }
@@ -51,14 +54,6 @@ return require('packer').startup(function()
   use { 'hrsh7th/cmp-path' }
   use { 'hrsh7th/cmp-cmdline' }
   use { 'onsails/lspkind-nvim' }
-  -- 使えない
-  -- use {
-  --   'zbirenbaum/copilot-cmp',
-  --   after = { 'copilot.lua' },
-  --   config = function()
-  --     require('copilot_cmp').setup()
-  --   end
-  -- }
   use { 'github/copilot.vim' }
 
   -- telescope
@@ -104,4 +99,10 @@ return require('packer').startup(function()
       }
     end
   }
+
+  -- Debug
+  use { 'mfussenegger/nvim-dap' }
+
+  -- Rust
+  use { 'simrat39/rust-tools.nvim' }
 end)

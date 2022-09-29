@@ -41,6 +41,7 @@ vim.api.nvim_set_keymap('', "<C-g>", ":lua require('telescope').extensions.live_
 vim.api.nvim_set_keymap('', "<C-h>", ":lua require('telescope').extensions.frecency.frecency()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('', "<C-s>", ":lua require('telescope.builtin').lsp_document_symbols()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('', "<leader>fb", ":lua require('telescope.builtin').buffers()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', "<leader>ts", ":lua require('telescope.builtin').spell_suggest()<CR>", { noremap = true, silent = true })
 
 require('telescope').load_extension('fzf')
 -- require('telescope').load_extension('frecency')
