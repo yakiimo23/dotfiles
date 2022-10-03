@@ -64,6 +64,12 @@ map('', 'sk', '<C-w>k')
 map('', 'sj', '<C-w>j')
 map('', 'sl', '<C-w>l')
 
+-- Resize window
+map('', '<A-l>', ':vertical resize +5<CR>')
+map('', '<A-h>', ':vertical resize -5<CR>')
+map('', '<A-j>', ':resize +5<CR>')
+map('', '<A-k>', ':resize -5<CR>')
+
 -- Split new terminal window
 -- map('', 'T', ':split | wincmd j | resize -10 | terminal<CR>')
 

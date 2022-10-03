@@ -3,7 +3,7 @@ require('toggleterm').setup {
   open_mapping = [[<C-t>]],
   hide_numbers = true,
   shading_factor = 2,
-  direction = 'horizontal',
+  direction = 'float',
   float_opts = {
     border = 'curved',
     winblend = 0
