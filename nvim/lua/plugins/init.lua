@@ -6,12 +6,6 @@ return require('packer').startup(function()
 
   -- colorscheme
   use { 'morhetz/gruvbox', opt = true }
-  -- use {
-    -- 'navarasu/onedark.nvim',
-    -- config = function()
-    --   require('onedark').load()
-    -- end
-  -- }
   use { 'EdenEast/nightfox.nvim' }
 
   use { 'editorconfig/editorconfig-vim' }
@@ -77,7 +71,7 @@ return require('packer').startup(function()
     config = function()
       require('telescope').load_extension('frecency')
     end,
-    requires = { 'tami5/sqlite.lua' }
+    requires = { 'kkharji/sqlite.lua' }
   }
 
   -- statusbar
@@ -108,5 +102,6 @@ return require('packer').startup(function()
   use { 'mfussenegger/nvim-dap' }
 
   -- Rust
+  use { 'rust-lang/rust.vim' }
   use { 'simrat39/rust-tools.nvim' }
 end)

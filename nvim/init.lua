@@ -27,7 +27,7 @@ opt.cursorline = true
 opt.tabstop = 2
 opt.smartindent = true
 opt.showmatch = true
-opt.clipboard = 'unnamed'
+opt.clipboard = 'unnamedplus'
 opt.list = true
 opt.infercase = true
 opt.switchbuf = 'useopen'
@@ -65,8 +65,8 @@ map('', 'sj', '<C-w>j')
 map('', 'sl', '<C-w>l')
 
 -- Resize window
-map('', '<A-l>', ':vertical resize +5<CR>')
-map('', '<A-h>', ':vertical resize -5<CR>')
+map('', '<A-h>', ':vertical resize +5<CR>')
+map('', '<A-l>', ':vertical resize -5<CR>')
 map('', '<A-j>', ':resize +5<CR>')
 map('', '<A-k>', ':resize -5<CR>')
 
@@ -79,5 +79,5 @@ map('n', 'rp', ':let @+ = expand("%")<CR>')
 -- Terminal mode
 map('t', '<C-w>[', '<C-\\><C-n>')
 
--- Esc
-map('n', '<Esc><Esc>', ':noh<CR>')
+-- noh
+map('', '<Esc><Esc>', ':noh<CR>')
