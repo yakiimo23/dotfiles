@@ -1,4 +1,5 @@
 local cmp = require('cmp')
+local lspkind = require('lspkind')
 
 cmp.setup({
   snippet = {
@@ -34,7 +35,18 @@ cmp.setup({
     -- { name = 'snippy' }, -- For snippy users.
   }, {
     { name = 'buffer' },
+  }),
+  formatting = {
+  format = lspkind.cmp_format({
+    mode = 'symbol',
+    maxwidth = 50,
+    ellipsis_char = '...',
+    bofore = function(entry, vim_item)
+      return vim_item
+    end
   })
+}
+
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
@@ -66,75 +78,24 @@ tabnine:setup({
   show_prediction_strength = true;
 })
 
--- formattings
--- local lspkind = require('lspkind')
--- local kind_icons = {
---   Text = "",
---   Method = "",
---   Function = "",
---   Constructor = "",
---   Field = "",
---   Variable = "",
---   Class = "ﴯ",
---   Interface = "",
---   Module = "",
---   Property = "ﰠ",
---   Unit = "",
---   Value = "",
---   Enum = "",
---   Keyword = "",
---   Snippet = "",
---   Color = "",
---   File = "",
---   Reference = "",
---   Folder = "",
---   EnumMember = "",
---   Constant = "",
---   Struct = "",
---   Event = "",
---   Operator = "",
---   TypeParameter = ""
--- }
--- local source_mapping = {
---   buffer = "[Buffer]",
---   nvim_lsp = "[LSP]",
---   nvim_lua = "[Lua]",
---   cmp_tabnine = "[TN]",
---   path = "[Path]",
--- }
+-- formatting
 -- cmp.setup {
 --   formatting = {
 --     format = function(entry, vim_item)
---       vim_item.kind = lspkind.presets.default[vim_item.kind]
---       local menu = source_mapping[entry.source.name]
---       if entry.source.name == 'cmp_tabnine' then
---         if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
---           menu = entry.completion_item.data.detail .. ' ' .. menu
---         end
---         vim_item.kind = ''
---       end
---       vim_item.menu = menu
+--       -- Source
+--       vim_item.menu = ({
+--         cmp_tabnine = "[TN]",
+--         copilot = "[CP]",
+--         buffer = "[Buffer]",
+--         nvim_lsp = "[LSP]",
+--         luasnip = "[LuaSnip]",
+--         nvim_lua = "[Lua]",
+--         latex_symbols = "[LaTeX]",
+--       })[entry.source.name]
 --       return vim_item
 --     end
 --   },
 -- }
-cmp.setup {
-  formatting = {
-    format = function(entry, vim_item)
-      -- Source
-      vim_item.menu = ({
-        cmp_tabnine = "[TN]",
-        copilot = "[CP]",
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[LaTeX]",
-      })[entry.source.name]
-      return vim_item
-    end
-  },
-}
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))

@@ -14,7 +14,7 @@ end
 require('config')
 
 ------------------------------ OPTIONS ------------------------------
--- cmd 'colorscheme onedark'
+cmd 'colorscheme nightfox'
 cmd 'language en_US.UTF-8'
 
 opt.termguicolors = true
@@ -36,7 +36,7 @@ opt.smartcase = true
 opt.mouse = 'a'
 opt.backspace = { 'indent', 'eol', 'start' }
 opt.listchars = { tab = '»-', space = '_', eol = '↲'}
-opt.cmdheight = 2
+opt.cmdheight = 0
 opt.updatetime = 300
 opt.shortmess = opt.shortmess + 'c'
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
@@ -78,3 +78,6 @@ map('n', 'rp', ':let @+ = expand("%")<CR>')
 
 -- Terminal mode
 map('t', '<C-w>[', '<C-\\><C-n>')
+
+-- Esc
+map('n', '<Esc><Esc>', ':noh<CR>')

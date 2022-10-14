@@ -6,7 +6,11 @@ require('toggleterm').setup {
   direction = 'float',
   float_opts = {
     border = 'curved',
-    winblend = 0
+    winblend = 0,
+    highlights = {
+      border = 'Normal',
+      background = 'Normal',
+    }
   }
 }
 

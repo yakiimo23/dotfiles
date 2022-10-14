@@ -6,12 +6,13 @@ return require('packer').startup(function()
 
   -- colorscheme
   use { 'morhetz/gruvbox', opt = true }
-  use {
-    'navarasu/onedark.nvim',
-    config = function()
-      require('onedark').load()
-    end
-  }
+  -- use {
+    -- 'navarasu/onedark.nvim',
+    -- config = function()
+    --   require('onedark').load()
+    -- end
+  -- }
+  use { 'EdenEast/nightfox.nvim' }
 
   use { 'editorconfig/editorconfig-vim' }
   use { 'windwp/nvim-autopairs' }
@@ -31,6 +32,9 @@ return require('packer').startup(function()
       'kyazdani42/nvim-web-devicons'
     }
   }
+
+  -- Notification
+  use { 'rcarriga/nvim-notify' }
 
   -- Git
   use { 'lewis6991/gitsigns.nvim', tag = 'release' }
