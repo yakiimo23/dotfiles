@@ -10,6 +10,8 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+g.mapleader = ';'
+
 ------------------------------ PLUGINS ------------------------------
 require('config')
 
@@ -41,6 +43,8 @@ opt.updatetime = 300
 opt.shortmess = opt.shortmess + 'c'
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
 opt.laststatus = 3
+opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
 ------------------------------ MAPPINGS ------------------------------
 
@@ -80,4 +84,4 @@ map('n', 'rp', ':let @+ = expand("%")<CR>')
 map('t', '<C-w>[', '<C-\\><C-n>')
 
 -- noh
-map('', '<Esc><Esc>', ':noh<CR>')
+map('n', '<leader>nn', ':noh<CR>')

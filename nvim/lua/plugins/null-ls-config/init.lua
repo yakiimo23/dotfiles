@@ -27,7 +27,8 @@ null_ls.setup({
       end,
       extra_args = { '--config', cspell_files.config },
     }),
-    null_ls.builtins.diagnostics.rubocop
+    null_ls.builtins.diagnostics.rubocop,
+    null_ls.builtins.formatting.rubocop
   },
 })
 
