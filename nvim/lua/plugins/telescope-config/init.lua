@@ -14,7 +14,8 @@ require('telescope').setup {
       width = 0.87,
       height = 0.80,
       preview_cutoff = 120,
-    }
+    },
+    path_display = { "smart" },
   },
   pickers = {
     find_files = {
