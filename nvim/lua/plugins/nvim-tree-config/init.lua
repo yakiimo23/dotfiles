@@ -1,4 +1,4 @@
-vim.api.nvim_set_keymap('', "<C-\\>", ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', "<leader>ff", ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 require('nvim-tree').setup {
   update_focused_file = {

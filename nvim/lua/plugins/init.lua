@@ -32,7 +32,9 @@ return require('packer').startup(function()
 
   -- Git
   use { 'lewis6991/gitsigns.nvim', tag = 'release' }
-  use { 'tyru/open-browser-github.vim', requires = 'tyru/open-browser.vim' }
+  use { 'Almo7aya/openingh.nvim' }
+
+  -- Terminal
   use { 'akinsho/toggleterm.nvim', tag = '*' }
 
   -- LSP
@@ -83,6 +85,9 @@ return require('packer').startup(function()
   -- syntax highlight
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'p00f/nvim-ts-rainbow' }
+
+  -- automatically highlighting
+  use { 'RRethy/vim-illuminate' }
 
   -- Quick Fix
   use { 'kevinhwang91/nvim-bqf' }
