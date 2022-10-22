@@ -35,7 +35,7 @@ local servers = { 'solargraph', 'tsserver' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
-    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
     flags = {
       -- This will be the default in neovim 0.7+
       debounce_text_changes = 150,
