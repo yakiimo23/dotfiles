@@ -86,6 +86,9 @@ return require('packer').startup(function()
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'p00f/nvim-ts-rainbow' }
 
+  -- indent line
+  use { 'lukas-reineke/indent-blankline.nvim' }
+
   -- automatically highlighting
   use { 'RRethy/vim-illuminate' }
 

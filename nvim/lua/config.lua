@@ -1,5 +1,6 @@
 require('plugins')
 require('plugins.gitsigns-config')
+require('plugins.indent-blankline')
 require('plugins.lualine-config')
 require('plugins.nightfox')
 require('plugins.nvim-autopairs-config')
