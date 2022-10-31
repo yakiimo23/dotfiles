@@ -29,24 +29,21 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'cmp_tabnine' },
     { name = 'copilot' },
-    { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'vsnip' },
   }, {
     { name = 'buffer' },
   }),
   formatting = {
-  format = lspkind.cmp_format({
-    mode = 'symbol',
-    maxwidth = 50,
-    ellipsis_char = '...',
-    bofore = function(entry, vim_item)
-      return vim_item
-    end
-  })
-}
-
+    format = lspkind.cmp_format({
+      mode = 'symbol',
+      maxwidth = 50,
+      ellipsis_char = '...',
+      bofore = function(entry, vim_item)
+        return vim_item
+      end
+    })
+  }
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
@@ -78,24 +75,6 @@ tabnine:setup({
   show_prediction_strength = true;
 })
 
--- formatting
--- cmp.setup {
---   formatting = {
---     format = function(entry, vim_item)
---       -- Source
---       vim_item.menu = ({
---         cmp_tabnine = "[TN]",
---         copilot = "[CP]",
---         buffer = "[Buffer]",
---         nvim_lsp = "[LSP]",
---         luasnip = "[LuaSnip]",
---         nvim_lua = "[Lua]",
---         latex_symbols = "[LaTeX]",
---       })[entry.source.name]
---       return vim_item
---     end
---   },
--- }
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
