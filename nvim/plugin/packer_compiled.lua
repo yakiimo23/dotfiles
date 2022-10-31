@@ -161,6 +161,11 @@ _G.packer_plugins = {
     path = "/home/charlie/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
+  ["mason-null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/charlie/.local/share/nvim/site/pack/packer/start/mason-null-ls.nvim",
+    url = "https://github.com/jayp0521/mason-null-ls.nvim"
+  },
   ["mason.nvim"] = {
     loaded = true,
     path = "/home/charlie/.local/share/nvim/site/pack/packer/start/mason.nvim",
@@ -321,6 +326,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\nS\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\19live_grep_args\19load_extension\14telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: auto-session
 time([[Config for auto-session]], true)
 try_loadstring("\27LJ\2\n…\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\31auto_session_suppress_dirs\1\3\0\0\a~/\15~/Projects\1\0\1\14log_level\tinfo\nsetup\17auto-session\frequire\0", "config", "auto-session")
@@ -329,10 +338,6 @@ time([[Config for auto-session]], false)
 time([[Config for telescope-frecency.nvim]], true)
 try_loadstring("\27LJ\2\nM\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\rfrecency\19load_extension\14telescope\frequire\0", "config", "telescope-frecency.nvim")
 time([[Config for telescope-frecency.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\nS\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\19live_grep_args\19load_extension\14telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

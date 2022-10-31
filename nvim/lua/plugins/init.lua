@@ -41,6 +41,7 @@ return require('packer').startup(function()
   use { 'neovim/nvim-lspconfig' }
   use { "williamboman/mason.nvim" }
   use { "williamboman/mason-lspconfig.nvim" }
+  use { 'jayp0521/mason-null-ls.nvim' }
   use { 'jose-elias-alvarez/null-ls.nvim' }
   use { 'folke/trouble.nvim', requires = 'kyazdani42/nvim-web-devicons' }
 
