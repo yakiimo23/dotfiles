@@ -60,8 +60,8 @@ map('n', 'ss', ':split<CR><C-w>w')
 map('n', 'sv', ':vsplit<CR><C-w>w')
 
 -- Switch tab
-map('', '<S-Tab>', ':tabprev<CR>')
-map('', '<Tab>', ':tabnext<CR>')
+map('n', '<S-Tab>', ':tabprev<CR>')
+map('n', '<Tab>', ':tabnext<CR>')
 
 -- Move window
 map('', 'sh', '<C-w>h')
