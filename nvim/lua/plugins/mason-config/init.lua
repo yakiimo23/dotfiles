@@ -1,5 +1,7 @@
 require("mason").setup()
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "solargraph", "rust_analyzer", "tsserver" }
+})
 
 -- Rust
 local rt = require("rust-tools")

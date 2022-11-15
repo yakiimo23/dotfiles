@@ -44,8 +44,8 @@ opt.updatetime = 300
 opt.shortmess = opt.shortmess + 'c'
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
 opt.laststatus = 3
-opt.foldmethod = 'expr'
-opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- opt.foldmethod = 'expr'
+-- opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
 ------------------------------ MAPPINGS ------------------------------
 
@@ -60,8 +60,8 @@ map('n', 'ss', ':split<CR><C-w>w')
 map('n', 'sv', ':vsplit<CR><C-w>w')
 
 -- Switch tab
-map('n', '<S-Tab>', ':tabprev<CR>')
-map('n', '<Tab>', ':tabnext<CR>')
+map('n', '<C-h>', 'gT')
+map('n', '<C-l>', 'gt')
 
 -- Move window
 map('', 'sh', '<C-w>h')
