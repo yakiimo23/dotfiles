@@ -7,6 +7,7 @@ return require('packer').startup(function()
   -- colorscheme
   use { 'morhetz/gruvbox', opt = true }
   use { 'EdenEast/nightfox.nvim' }
+  use { 'xiyaowong/nvim-transparent' }
 
   use { 'editorconfig/editorconfig-vim' }
   use { 'windwp/nvim-autopairs' }
