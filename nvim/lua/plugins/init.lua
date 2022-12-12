@@ -85,6 +85,15 @@ return require('packer').startup(function()
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+  -- scrollbar
+  use { 'petertriho/nvim-scrollbar' }
+  use {
+    'kevinhwang91/nvim-hlslens',
+    config = function()
+      require('scrollbar.handlers.search').setup({})
+    end,
+  }
+
   -- syntax highlight
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'p00f/nvim-ts-rainbow' }
