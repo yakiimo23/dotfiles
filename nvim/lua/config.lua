@@ -1,6 +1,7 @@
 require('plugins')
 require('plugins.colorscheme')
 require('plugins.gitsigns-config')
+require('plugins.grep')
 require('plugins.indent-blankline')
 require('plugins.lualine-config')
 require('plugins.nvim-autopairs-config')

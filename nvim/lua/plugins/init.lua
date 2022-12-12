@@ -98,6 +98,8 @@ return require('packer').startup(function()
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'p00f/nvim-ts-rainbow' }
 
+  use { 'machakann/vim-sandwich' }
+
   -- indent line
   use { 'lukas-reineke/indent-blankline.nvim' }
 
@@ -106,6 +108,9 @@ return require('packer').startup(function()
 
   -- Quick Fix
   use { 'kevinhwang91/nvim-bqf' }
+
+  -- grep
+  use { 'kyoh86/vim-ripgrep' }
 
   -- save session
   use {
