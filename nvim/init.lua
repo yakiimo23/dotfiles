@@ -44,6 +44,7 @@ opt.updatetime = 300
 opt.shortmess = opt.shortmess + 'c'
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
 opt.laststatus = 3
+opt.wrap = false
 -- opt.foldmethod = 'expr'
 -- opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
