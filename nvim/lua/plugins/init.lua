@@ -8,6 +8,7 @@ return require('packer').startup(function()
   use { 'morhetz/gruvbox', opt = true }
   use { 'EdenEast/nightfox.nvim' }
   use { 'xiyaowong/nvim-transparent' }
+  use { 'projekt0n/github-nvim-theme', tag = 'v0.0.7' }
 
   use { 'editorconfig/editorconfig-vim' }
   use { 'windwp/nvim-autopairs' }
