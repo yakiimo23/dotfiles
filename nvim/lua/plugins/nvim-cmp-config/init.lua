@@ -27,7 +27,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'copilot' },
-    { name = 'cmp_tabnine' },
+    -- { name = 'cmp_tabnine' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'vsnip' },
   }, {
@@ -64,17 +64,18 @@ cmp.setup.cmdline(':', {
 })
 
 -- TabNine configs
-local tabnine = require('cmp_tabnine.config')
-tabnine:setup({
-  max_lines = 1000;
-  max_num_results = 20;
-  sort = true;
-  run_on_every_keystroke = true;
-  snippet_placeholder = '..';
-  show_prediction_strength = true;
-})
+-- local tabnine = require('cmp_tabnine.config')
+-- tabnine:setup({
+--   max_lines = 1000;
+--   max_num_results = 20;
+--   sort = true;
+--   run_on_every_keystroke = true;
+--   snippet_placeholder = '..';
+--   show_prediction_strength = true;
+-- })
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
 
--- vim.api.nvim_set_keymap('i', '<C-j>', "copilot#Accept("\<CR>")", { silent = true })
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true })

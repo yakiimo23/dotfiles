@@ -16,7 +16,7 @@ g.mapleader = ';'
 require('config')
 
 ------------------------------ OPTIONS ------------------------------
-cmd 'colorscheme nightfox'
+cmd 'colorscheme gruvbox'
 cmd 'language en_US.UTF-8'
 
 opt.termguicolors = true
@@ -25,7 +25,7 @@ opt.fileencodings = 'utf-8'
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.number = true
-opt.relativenumber = true
+-- opt.relativenumber = true
 opt.cursorline = true
 opt.tabstop = 2
 opt.smartindent = true
