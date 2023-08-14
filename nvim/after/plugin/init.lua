@@ -1,40 +1,24 @@
--- [[ Custom Setting Options ]]
-
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.list = true
-vim.opt.listchars = { tab = '»-', space = '_', eol = '↲'}
-vim.opt.cursorline = true
-vim.opt.smartindent = true
-vim.opt.backspace = { 'indent', 'eol', 'start' }
-vim.opt.cmdheight = 0
-vim.opt.laststatus = 3
-
 -- [[ Custom Keymaps ]]
 
 -- Toggle Tree
 vim.keymap.set('n', '<leader>ff', ':NvimTreeToggle<CR>', { desc = 'Finder' })
 
--- Switch Tabs
-vim.keymap.set('n', '<C-h>', 'gT', { desc = 'Previous Tab' })
-vim.keymap.set('n', '<C-l>', 'gt', { desc = 'Next Tab' })
-
--- Disable highlight after search
-vim.keymap.set('n', '<leader>nn', ':noh<CR>', { desc = 'Disable hignlight' })
-
--- Copy Relative Path
-vim.keymap.set('n', 'rp', ':let @+ = expand("%")<CR>', { desc = 'Copy Relative Path' })
-
--- Emacs Keybindings
-
-vim.keymap.set('i', '<C-p>', '<Up>')
-vim.keymap.set('i', '<C-n>', '<Down>')
-vim.keymap.set('i', '<C-b>', '<Left>')
-vim.keymap.set('i', '<C-f>', '<Right>')
-
 -- Lazygit
-vim.keymap.set('n', '<leader>lg', ':lua _lazygit_toggle()<CR>', { desc = 'Lazygit' })
+vim.keymap.set('n', '<leader>lg', ':LazyGit<CR>', { desc = 'Lazygit' })
 
 -- Open In GitHub
-vim.keymap.set('n', '<leader>gr', ':OpenInGHRepo<CR>', { desc = 'Open In GitHub Repository' })
-vim.keymap.set('n', '<leader>gf', ':OpenInGHFile<CR>', { desc = 'Open In GitHub File' })
+vim.keymap.set('n', '<leader>ogr', ':OpenInGHRepo<CR>', { desc = 'Open In GitHub Repository' })
+vim.keymap.set('n', '<leader>ogf', ':OpenInGHFile<CR>', { desc = 'Open In GitHub File' })
+
+-- Lsp Saga
+vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', { desc = 'Lsp Hover Doc' })
+vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', { desc = 'Lsp Code Action' })
+vim.keymap.set('n', '[e', ':Lspsaga diagnostic_jump_next<CR>')
+vim.keymap.set('n', ']e', ':Lspsaga diagnostic_jump_prev<CR>')
+
+-- RSpec
+vim.keymap.set("n", "<leader>rn", ":RSpecNearest<CR>", { desc = 'RSpec Nearest', noremap = true, silent = true })
+vim.keymap.set("n", "<leader>rf", ":RSpecCurrentFile<CR>", { desc = 'RSpec Current File', noremap = true, silent = true })
+vim.keymap.set("n", "<leader>rr", ":RSpecRerun<CR>", { desc = 'RSpec Rerun', noremap = true, silent = true })
+vim.keymap.set("n", "<leader>rF", ":RSpecOnlyFailures<CR>", { desc = 'RSpec only Failures', noremap = true, silent = true })
+vim.keymap.set("n", "<leader>rs", ":RSpecShowLastResult<CR>", { desc = 'RSpec Show Last Result', noremap = true, silent = true })
