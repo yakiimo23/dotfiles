@@ -42,7 +42,7 @@ vim.o.termguicolors = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.list = true
-vim.opt.listchars = { tab = '»-', space = '_', eol = '↲'}
+vim.opt.listchars = { tab = '»-', space = '_', eol = '↲' }
 vim.opt.cursorline = true
 vim.opt.smartindent = true
 vim.opt.backspace = { 'indent', 'eol', 'start' }
@@ -102,4 +102,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-

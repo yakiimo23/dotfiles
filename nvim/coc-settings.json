@@ -1,9 +1,21 @@
 {
   "languageserver": {
     "rubocop": {
-      "command": "rubocop",
-      "args": ["--lsp"],
-      "filetypes": ["ruby"]
+      "command": "bundle",
+      "args": [
+        "exec",
+        "rubocop",
+        "--lsp"
+      ],
+      "filetypes": [
+        "ruby"
+      ],
+      "rootPatterns": [
+        ".git",
+        "Gemfile"
+      ],
+      "requireRootPattern": true
     }
-  }
+  },
+  "coc.preferences.formatOnSave": true
 }
