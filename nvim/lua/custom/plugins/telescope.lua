@@ -6,6 +6,7 @@ return {
     'fannheyward/telescope-coc.nvim',
   },
   config = function()
+    local lga_actions = require('telescope-live-grep-args.actions')
     require('telescope').setup {
       defaults = {
         mappings = {
@@ -22,6 +23,15 @@ return {
         },
         coc = {
           prefer_locations = true,
+        },
+        live_grep_args = {
+          auto_quoting = true,
+          mappings = {
+            i = {
+              ['<C-k>'] = lga_actions.quote_prompt(),
+              ['<C-i>'] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+            },
+          },
         },
       },
     }
@@ -43,7 +53,8 @@ return {
     vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+    vim.keymap.set('n', '<leader>sg', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+      { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', ':Telescope coc diagnostics<CR>', { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>ss', ':Telescope coc document_symbols<CR>', { desc = '[S]earch [S]ymbols' })
   end
