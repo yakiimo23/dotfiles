@@ -3,7 +3,6 @@ return {
   version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'fannheyward/telescope-coc.nvim',
   },
   config = function()
     local lga_actions = require('telescope-live-grep-args.actions')
@@ -21,9 +20,6 @@ return {
           fuzzy = true,
           case_mode = 'ignore_case',
         },
-        coc = {
-          prefer_locations = true,
-        },
         live_grep_args = {
           auto_quoting = true,
           mappings = {
@@ -37,7 +33,6 @@ return {
     }
     -- Enable telescope fzf native, if installed
     pcall(require('telescope').load_extension, 'fzf')
-    pcall(require('telescope').load_extension, 'coc')
 
     -- See `:help telescope.builtin`
     vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -55,7 +50,7 @@ return {
     vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
       { desc = '[S]earch by [G]rep' })
-    vim.keymap.set('n', '<leader>sd', ':Telescope coc diagnostics<CR>', { desc = '[S]earch [D]iagnostics' })
-    vim.keymap.set('n', '<leader>ss', ':Telescope coc document_symbols<CR>', { desc = '[S]earch [S]ymbols' })
+    vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+    vim.keymap.set('n', '<leader>ss', require('telescope.builtin').lsp_document_symbols, { desc = '[S]earch [S]ymbols' })
   end
 }
