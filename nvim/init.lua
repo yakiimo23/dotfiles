@@ -88,16 +88,6 @@ require('lazy').setup({
     'nvim-telescope/telescope-live-grep-args.nvim',
   },
 
-  { -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    config = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
-  },
-
   { import = 'custom.plugins' },
 }, {})
 
