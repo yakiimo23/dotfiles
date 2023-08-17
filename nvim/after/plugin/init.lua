@@ -22,3 +22,4 @@ vim.keymap.set("n", "<leader>rf", ":RSpecCurrentFile<CR>", { desc = 'RSpec Curre
 vim.keymap.set("n", "<leader>rr", ":RSpecRerun<CR>", { desc = 'RSpec Rerun', noremap = true, silent = true })
 vim.keymap.set("n", "<leader>rF", ":RSpecOnlyFailures<CR>", { desc = 'RSpec only Failures', noremap = true, silent = true })
 vim.keymap.set("n", "<leader>rs", ":RSpecShowLastResult<CR>", { desc = 'RSpec Show Last Result', noremap = true, silent = true })
+vim.keymap.set("n", "<leader>rj", ":RSpecJump<CR>", { desc = 'RSpec Jump', noremap = true, silent = true })
