@@ -50,8 +50,8 @@ require('lazy').setup({
     event = 'VeryLazy',
     opts = {
       options = {
-        icons_enabled = false,
-        theme = 'onedark',
+        icons_enabled = true,
+        theme = 'onenord',
         component_separators = '|',
         section_separators = '',
       },
