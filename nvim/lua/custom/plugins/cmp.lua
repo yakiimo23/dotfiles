@@ -20,6 +20,9 @@ return {
 
     -- Adds cmdline completion capabilities
     'hrsh7th/cmp-cmdline',
+
+    -- Spell check
+    'f3fora/cmp-spell',
   },
   config = function()
     local cmp = require 'cmp'
@@ -82,6 +85,7 @@ return {
         { name = 'copilot', group_index = 2 },
         { name = 'nvim_lsp', group_index = 2, option = { use_show_condition = false } },
         { name = 'luasnip', group_index = 2 },
+        { name = 'spell', group_index = 2 },
       }, {
         { name = 'buffer' },
       }),
