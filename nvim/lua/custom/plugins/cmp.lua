@@ -76,15 +76,14 @@ return {
           cmp.config.compare.recently_used,
           cmp.config.compare.locality,
           cmp.config.compare.kind,
-          cmp.config.compare.sort_text,
-          cmp.config.compare.length,
+          cmp.config.compare.sort_text, cmp.config.compare.length,
           cmp.config.compare.order,
         },
       },
       sources = cmp.config.sources({
+        { name = 'luasnip', group_index = 2 },
         { name = 'copilot', group_index = 2 },
         { name = 'nvim_lsp', group_index = 2, option = { use_show_condition = false } },
-        { name = 'luasnip', group_index = 2 },
         { name = 'spell', group_index = 2 },
       }, {
         { name = 'buffer' },
