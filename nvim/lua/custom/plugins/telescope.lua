@@ -27,6 +27,8 @@ return {
             i = {
               ['<C-k>'] = lga_actions.quote_prompt(),
               ['<C-i>'] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+              ['<C-a>'] = lga_actions.quote_prompt({ postfix = " --iglob app/**" }),
+              ['<C-s>'] = lga_actions.quote_prompt({ postfix = " --iglob spec/**" })
             },
           },
         },
@@ -52,6 +54,7 @@ return {
     vim.keymap.set('n', '<leader>sg', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
       { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-    vim.keymap.set('n', '<leader>ss', require('telescope.builtin').lsp_document_symbols, { desc = '[S]earch [S]ymbols' })
+    vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols, { desc = '[D]ocument [S]ymbols' })
+    vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, { desc = '[W]orkspace [S]ymbols' })
   end
 }
