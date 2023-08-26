@@ -16,10 +16,8 @@ vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', { desc = 'Lsp Code
 vim.keymap.set('n', '[e', ':Lspsaga diagnostic_jump_next<CR>')
 vim.keymap.set('n', ']e', ':Lspsaga diagnostic_jump_prev<CR>')
 
--- RSpec
-vim.keymap.set("n", "<leader>rn", ":RSpecNearest<CR>", { desc = 'RSpec Nearest', noremap = true, silent = true })
-vim.keymap.set("n", "<leader>rf", ":RSpecCurrentFile<CR>", { desc = 'RSpec Current File', noremap = true, silent = true })
-vim.keymap.set("n", "<leader>rr", ":RSpecRerun<CR>", { desc = 'RSpec Rerun', noremap = true, silent = true })
-vim.keymap.set("n", "<leader>rF", ":RSpecOnlyFailures<CR>", { desc = 'RSpec only Failures', noremap = true, silent = true })
-vim.keymap.set("n", "<leader>rs", ":RSpecShowLastResult<CR>", { desc = 'RSpec Show Last Result', noremap = true, silent = true })
-vim.keymap.set("n", "<leader>rj", ":RSpecJump<CR>", { desc = 'RSpec Jump', noremap = true, silent = true })
+-- ror
+vim.keymap.set('n', '<leader>rc', ":lua require('ror.commands').list_commands()<CR>", { desc = '[R]or [C]ommands', silent = true })
+vim.keymap.set('n', '<leader>rf', ":lua require('ror.test').run()<CR>", { desc = '[R]or run current [F]ile', silent = true })
+vim.keymap.set('n', '<leader>rl', ":lua require('ror.test').run('Line')<CR>", { desc = '[R]or run current [L]ine', silent = true })
+vim.keymap.set('n', '<leader>rt', ":lua require('ror.test').attach_terminal()<CR>", { desc = '[R]or toggle [T]erminal', silent = true })

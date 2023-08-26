@@ -1,6 +1,14 @@
 return {
-  'mogulla3/rspec.nvim',
-  config = function ()
-    require('rspec').setup()
-  end
+  'weizheheng/ror.nvim',
+  dependencies = {
+    'stevearc/dressing.nvim',
+  },
+  config = function()
+    require('dressing').setup({
+      input = {
+        min_width = { 80, 0.9 },
+      },
+    })
+    require('ror').setup()
+  end,
 }
