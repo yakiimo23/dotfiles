@@ -12,6 +12,7 @@ vim.keymap.set('n', '<leader>ogf', ':OpenInGHFile<CR>', { desc = 'Open In GitHub
 
 -- Lsp Saga
 vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', { desc = 'Lsp Hover Doc' })
+vim.keymap.set('n', '<leader>ld', ':Lspsaga show_buf_diagnostics<CR>', { desc = 'Lsp Show Buffer Diagnostics' })
 vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', { desc = 'Lsp Code Action' })
 vim.keymap.set('n', '[e', ':Lspsaga diagnostic_jump_next<CR>')
 vim.keymap.set('n', ']e', ':Lspsaga diagnostic_jump_prev<CR>')
