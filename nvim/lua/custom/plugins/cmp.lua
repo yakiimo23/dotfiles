@@ -28,7 +28,6 @@ return {
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     require('luasnip.loaders.from_vscode').lazy_load()
-    luasnip.config.setup {}
 
     local has_words_before = function()
       if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
@@ -37,6 +36,7 @@ return {
     end
 
     cmp.setup {
+      preselect = cmp.PreselectMode.None,
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
@@ -70,21 +70,22 @@ return {
         comparators = {
           require("copilot_cmp.comparators").prioritize,
           cmp.config.compare.offset,
-          -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
           cmp.config.compare.exact,
+          -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
           cmp.config.compare.score,
           cmp.config.compare.recently_used,
           cmp.config.compare.locality,
           cmp.config.compare.kind,
-          cmp.config.compare.sort_text, cmp.config.compare.length,
+          -- cmp.config.compare.sort_text,
+          cmp.config.compare.length,
           cmp.config.compare.order,
         },
       },
       sources = cmp.config.sources({
-        { name = 'luasnip', group_index = 2 },
-        { name = 'copilot', group_index = 2 },
-        { name = 'nvim_lsp', group_index = 2, option = { use_show_condition = false } },
-        { name = 'spell', group_index = 2 },
+        { name = 'copilot' },
+        { name = 'luasnip' },
+        { name = 'nvim_lsp' },
+        { name = 'spell' },
       }, {
         { name = 'buffer' },
       }),
