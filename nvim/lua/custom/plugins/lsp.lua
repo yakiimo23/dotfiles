@@ -52,7 +52,8 @@ return {
 
     local servers = {
       -- rust_analyzer = {},
-      ruby_ls = {},
+      -- ruby_ls = {},
+      solargraph = {},
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
