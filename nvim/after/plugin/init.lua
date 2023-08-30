@@ -17,8 +17,8 @@ vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', { desc = 'Lsp Code
 vim.keymap.set('n', '[e', ':Lspsaga diagnostic_jump_next<CR>')
 vim.keymap.set('n', ']e', ':Lspsaga diagnostic_jump_prev<CR>')
 
--- ror
-vim.keymap.set('n', '<leader>rc', ":lua require('ror.commands').list_commands()<CR>", { desc = '[R]or [C]ommands', silent = true })
-vim.keymap.set('n', '<leader>rf', ":lua require('ror.test').run()<CR>", { desc = '[R]or run current [F]ile', silent = true })
-vim.keymap.set('n', '<leader>rl', ":lua require('ror.test').run('Line')<CR>", { desc = '[R]or run current [L]ine', silent = true })
-vim.keymap.set('n', '<leader>rt', ":lua require('ror.test').attach_terminal()<CR>", { desc = '[R]or toggle [T]erminal', silent = true })
+-- neotest-rspec
+vim.keymap.set('n', '<leader>tf', ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", { desc = '[T]est current [F]ile', silent = true })
+vim.keymap.set('n', '<leader>tn', ":lua require('neotest').run.run()<CR>", { desc = '[T]est [N]earest test', silent = true })
+vim.keymap.set('n', '<leader>to', ":lua require('neotest').output_panel.toggle()<CR>", { desc = '[T]est [O]utput', silent = true })
+vim.keymap.set('n', '<leader>ts', ":lua require('neotest').summary.toggle()<CR>", { desc = '[T]est [S]ummary toggle', silent = true })
