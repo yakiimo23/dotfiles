@@ -4,10 +4,10 @@ return {
     cmd = 'Copilot',
     event = 'InsertEnter',
     config = function ()
-      require('copilot').setup {
-        -- suggestion = { enabled = false },
-        -- panel = { enabled = false }
-      }
+      require('copilot').setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
     end
   },
   {
@@ -16,5 +16,12 @@ return {
     config = function ()
       require('copilot_cmp').setup()
     end
-  }
+  },
+  -- {
+  --   'hrsh7th/cmp-copilot',
+  --   event = 'InsertEnter',
+  -- },
+  -- {
+  --   'github/copilot.vim',
+  -- },
 }
