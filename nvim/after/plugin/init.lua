@@ -22,3 +22,14 @@ vim.keymap.set('n', '<leader>tf', ":lua require('neotest').run.run(vim.fn.expand
 vim.keymap.set('n', '<leader>tn', ":lua require('neotest').run.run()<CR>", { desc = '[T]est [N]earest test', silent = true })
 vim.keymap.set('n', '<leader>to', ":lua require('neotest').output_panel.toggle()<CR>", { desc = '[T]est [O]utput', silent = true })
 vim.keymap.set('n', '<leader>ts', ":lua require('neotest').summary.toggle()<CR>", { desc = '[T]est [S]ummary toggle', silent = true })
+
+-- copilot.lua
+vim.keymap.set('i', '<Tab>', function()
+  if require('copilot.suggestion').is_visible() then
+    require('copilot.suggestion').accept()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, false, true), 'n', false)
+  end
+end,{
+  silent = true,
+})

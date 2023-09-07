@@ -53,13 +53,29 @@ return {
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,
         },
-        ['<Tab>'] = vim.schedule_wrap(function(fallback)
-          if cmp.visible() and has_words_before() then
-            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        ['<Tab>'] = cmp.mapping(function(fallback)
+          if require('copilot.suggestion').is_visible() then
+            require('copilot.suggestion').accept()
+          elseif cmp.visible() then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+          elseif luasnip.expandable() then
+            luasnip.expand()
+          elseif has_words_before() then
+            cmp.complete()
           else
             fallback()
           end
-        end),
+        end, {
+          'i',
+          's',
+        }),
+        -- ['<Tab>'] = vim.schedule_wrap(function(fallback)
+        --   if cmp.visible() and has_words_before() then
+        --     cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        --   else
+        --     fallback()
+        --   end
+        -- end),
       },
       window = {
         completion = cmp.config.window.bordered(),
@@ -82,7 +98,7 @@ return {
         },
       },
       sources = cmp.config.sources({
-        { name = 'copilot' },
+        -- { name = 'copilot' },
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
         { name = 'spell' },
@@ -106,5 +122,14 @@ return {
         { name = 'cmdline' }
       })
     })
+
+    -- cmp.event:on('menu_opened', function()
+    --   vim.b.copilot_suggestion_hidden = true
+    -- end)
+    --
+    -- cmp.event:on("menu_closed", function()
+    --   vim.b.copilot_suggestion_hidden = false
+    -- end)
+    --
   end
 }
