@@ -17,12 +17,6 @@ vim.keymap.set('n', '<leader>ca', ':Lspsaga code_action<CR>', { desc = 'Lsp Code
 vim.keymap.set('n', '[e', ':Lspsaga diagnostic_jump_next<CR>')
 vim.keymap.set('n', ']e', ':Lspsaga diagnostic_jump_prev<CR>')
 
--- neotest-rspec
-vim.keymap.set('n', '<leader>tf', ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", { desc = '[T]est current [F]ile', silent = true })
-vim.keymap.set('n', '<leader>tn', ":lua require('neotest').run.run()<CR>", { desc = '[T]est [N]earest test', silent = true })
-vim.keymap.set('n', '<leader>to', ":lua require('neotest').output_panel.toggle()<CR>", { desc = '[T]est [O]utput', silent = true })
-vim.keymap.set('n', '<leader>ts', ":lua require('neotest').summary.toggle()<CR>", { desc = '[T]est [S]ummary toggle', silent = true })
-
 -- copilot.lua
 vim.keymap.set('i', '<Tab>', function()
   if require('copilot.suggestion').is_visible() then
@@ -33,3 +27,23 @@ vim.keymap.set('i', '<Tab>', function()
 end,{
   silent = true,
 })
+
+-- rspec to toggleterm
+local rspec_path = function()
+  local path = vim.fn.expand('%')
+  return string.format('bin/rspec %s', path)
+end
+
+local rspec_path_with_current_line = function()
+  local path = vim.fn.expand('%')
+  local line = vim.fn.line('.')
+  return string.format('bin/rspec %s:%s', path, line)
+end
+
+vim.keymap.set('n', '<leader>tf', function()
+  require('toggleterm').exec(rspec_path())
+end, { desc = 'Run Rspec File in toggleterm', silent = true })
+
+vim.keymap.set('n', '<leader>tn', function()
+  require('toggleterm').exec(rspec_path_with_current_line())
+end, { desc = 'Run Rspec Nearest in toggleterm', silent = true })
