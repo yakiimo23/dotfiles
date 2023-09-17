@@ -2,6 +2,9 @@ return {
   'hrsh7th/nvim-cmp',
   event = "InsertEnter",
   dependencies = {
+    -- pictograms for completion menu
+    'onsails/lspkind-nvim',
+
     -- Snippet Engine & its associated nvim-cmp source
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
@@ -27,6 +30,7 @@ return {
   config = function()
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
+    local lspkind = require 'lspkind'
     require('luasnip.loaders.from_vscode').lazy_load()
 
     local has_words_before = function()
@@ -96,6 +100,19 @@ return {
           cmp.config.compare.length,
           cmp.config.compare.order,
         },
+      formatting = {
+        format = lspkind.cmp_format({
+          with_text = true,
+          menu = {
+            buffer = "[Buffer]",
+            nvim_lsp = "[LSP]",
+            luasnip = "[LuaSnip]",
+            nvim_lua = "[Lua]",
+            path = "[Path]",
+            spell = "[Spell]",
+            cmdline = "[Cmdline]",
+          },
+        }),
       },
       sources = cmp.config.sources({
         -- { name = 'copilot' },
