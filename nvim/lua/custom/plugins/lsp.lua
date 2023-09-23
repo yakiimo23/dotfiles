@@ -52,6 +52,7 @@ return {
 
     local servers = {
       -- rust_analyzer = {},
+      cspell = {},
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
