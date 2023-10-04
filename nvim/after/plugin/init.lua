@@ -47,3 +47,6 @@ end, { desc = 'Run Rspec File in toggleterm', silent = true })
 vim.keymap.set('n', '<leader>tn', function()
   require('toggleterm').exec(rspec_path_with_current_line())
 end, { desc = 'Run Rspec Nearest in toggleterm', silent = true })
+
+-- Bug fix for tree-sitter
+vim.cmd('autocmd FileType ruby setlocal indentkeys-=.')

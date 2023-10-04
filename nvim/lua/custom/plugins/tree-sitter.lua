@@ -13,7 +13,7 @@ return {
       auto_install = false,
 
       highlight = { enable = true },
-      indent = { enable = false, disable = { 'python' } },
+      indent = { enable = true, disable = { 'python' } },
       incremental_selection = {
         enable = true,
         keymaps = {
