@@ -67,10 +67,19 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    -- opts = {
+    --   char = '┊',
+    --   show_trailing_blankline_indent = false,
+    -- },
+    main = 'ibl',
+    config = function()
+      require('ibl').setup({
+        debounce = 100,
+        indent = { char = '|' },
+        whitespace = { highlight = { 'Whitespace', 'NonText' } },
+        scope = { exclude = { 'help', 'terminal' } },
+      })
+    end,
   },
 
   -- "gc" to comment visual regions/lines
