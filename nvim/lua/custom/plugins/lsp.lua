@@ -53,6 +53,9 @@ return {
     local servers = {
       -- rust_analyzer = {},
       cspell = {},
+      solargraph = {
+        filetypes = { 'ruby' },
+      },
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
@@ -126,6 +129,25 @@ return {
 
     require('lspconfig').ruby_ls.setup({
       capabilities = capabilities,
+      init_options = {
+        enabledFeatures = {
+          "documentSymbol",
+          "documentLink",
+          "hover",
+          "foldingRanges",
+          "selectionRanges",
+          "semanticHighlighting",
+          "formatting",
+          "onTypeFormatting",
+          "diagnostics",
+          "codeActions",
+          "codeActionResolve",
+          "documentHighlight",
+          "inlayHints",
+          "completion",
+          "codeLens",
+        },
+      },
       settings = {
         formatter = 'auto',
       },
