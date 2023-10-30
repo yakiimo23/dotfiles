@@ -15,6 +15,14 @@ return {
             ['<C-d>'] = false,
           },
         },
+        layout_strategy = 'vertical',
+        layout_config = {
+          vertical = {
+            width = 0.95,
+            height = 0.95,
+            preview_height = 0.5,
+          },
+        },
       },
       extensions = {
         fzf = {
