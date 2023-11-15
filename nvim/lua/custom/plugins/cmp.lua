@@ -103,7 +103,7 @@ return {
         -- { name = 'copilot' },
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
-        { name = 'spell' },
+        -- { name = 'spell' },
       }, {
         { name = 'buffer' },
       }),
