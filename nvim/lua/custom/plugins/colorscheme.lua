@@ -1,3 +1,7 @@
+if vim.g.vscode then
+  return {}
+end
+
 return {
   'rmehri01/onenord.nvim',
   priority = 1000,
