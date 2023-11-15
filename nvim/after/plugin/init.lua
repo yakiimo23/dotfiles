@@ -4,7 +4,7 @@
 vim.keymap.set('n', '<leader>ff', ':NvimTreeToggle<CR>', { desc = 'Finder' })
 
 -- Lazygit
-vim.keymap.set('n', '<leader>lg', ':LazyGit<CR>', { desc = 'Lazygit' })
+vim.keymap.set('n', '<leader>lg', ':LazyGit<CR><CR>', { desc = 'Lazygit' })
 
 -- Open In GitHub
 vim.keymap.set('n', '<leader>ogr', ':OpenInGHRepo<CR>', { desc = 'Open In GitHub Repository' })
