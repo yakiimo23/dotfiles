@@ -36,7 +36,8 @@ return {
               ['<C-k>'] = lga_actions.quote_prompt(),
               ['<C-i>'] = lga_actions.quote_prompt({ postfix = " --iglob " }),
               ['<C-a>'] = lga_actions.quote_prompt({ postfix = " --iglob app/**" }),
-              ['<C-s>'] = lga_actions.quote_prompt({ postfix = " --iglob spec/**" })
+              ['<C-s>'] = lga_actions.quote_prompt({ postfix = " --iglob spec/**" }),
+              ['<C-o>'] = lga_actions.quote_prompt({ postfix = " --iglob !lib/tasks/oneshot/**" })
             },
           },
         },
