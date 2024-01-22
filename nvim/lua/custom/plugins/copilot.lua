@@ -11,6 +11,11 @@ return {
           accept = false,
           auto_trigger = true,
         },
+        filetypes = {
+          markdown = true,
+          gitcommit = true,
+          yaml = true,
+        }
       })
     end
   },
