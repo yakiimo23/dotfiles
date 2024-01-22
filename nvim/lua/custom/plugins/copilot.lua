@@ -21,11 +21,7 @@ return {
       require('copilot_cmp').setup()
     end
   },
-  -- {
-  --   'hrsh7th/cmp-copilot',
-  --   event = 'InsertEnter',
-  -- },
-  -- {
-  --   'github/copilot.vim',
-  -- },
+  {
+    'gptlang/CopilotChat.nvim'
+  },
 }
