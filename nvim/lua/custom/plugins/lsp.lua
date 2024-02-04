@@ -52,7 +52,7 @@ return {
 
     local servers = {
       -- rust_analyzer = {},
-      cspell = {},
+      -- cspell = {},
       solargraph = {
         filetypes = { 'ruby' },
       },

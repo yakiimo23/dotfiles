@@ -41,6 +41,7 @@ require('lazy').setup({
         virt_text_pos = 'eol',
         delay = 500,
       },
+      numhl = true,
     },
   },
 
