@@ -27,12 +27,11 @@ return {
     end
   },
   {
-    'gptlang/CopilotChat.nvim',
-    dependencies = { 'zbirenbaum/copilot.lua' },
+    'CopilotC-Nvim/CopilotChat.nvim',
     opts = {
-      mode = 'split',
-      show_help = "yes", -- Show help text for CopilotChatInPlace, default: yes
-      debug = false, -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
+      show_help = "yes",
+      debug = true,
+      disable_extra_info = 'no',
       prompts = {
         Explain = "コードの説明",
         Review = "以下のコードを確認し、簡潔な提案をすること。",
