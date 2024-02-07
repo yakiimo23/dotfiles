@@ -52,7 +52,6 @@ return {
 
     local servers = {
       -- rust_analyzer = {},
-      -- cspell = {},
       solargraph = {
         filetypes = { 'ruby' },
       },
@@ -155,6 +154,12 @@ return {
       on_attach = function(client, buffer)
         ruby_setup_diagnostics(client, buffer)
       end,
+    })
+
+    require('lspconfig').typos_lsp.setup({
+      init_options = {
+        config = '~/.config/nvim/spell/.typos.toml',
+      },
     })
 
     -- Rubocop
