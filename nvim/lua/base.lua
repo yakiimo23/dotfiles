@@ -46,7 +46,7 @@ vim.opt.listchars = { tab = '»-', space = '_', eol = '↲' }
 vim.opt.cursorline = true
 vim.opt.smartindent = true
 vim.opt.backspace = { 'indent', 'eol', 'start' }
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
 vim.opt.spelllang = { 'en_us', 'cjk' }
 -- vim.opt.spell = true
