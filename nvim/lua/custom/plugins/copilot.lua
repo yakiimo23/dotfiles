@@ -28,6 +28,7 @@ return {
   },
   {
     'CopilotC-Nvim/CopilotChat.nvim',
+    branch = 'pr-chinese-fix', -- マルチバイトの文字化けを修正するためのブランチ
     opts = {
       show_help = "yes",
       debug = true,
