@@ -57,6 +57,12 @@ return {
           telemetry = { enable = false },
         },
       },
+      rubocop = {},
+      ruby_ls = {
+        init_options = {
+          formatter = "auto",
+        }
+      }
     }
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -124,28 +130,28 @@ return {
 
     require('lspconfig').ruby_ls.setup({
       capabilities = capabilities,
-      init_options = {
-        enabledFeatures = {
-          "documentSymbol",
-          "documentLink",
-          "hover",
-          "foldingRanges",
-          "selectionRanges",
-          "semanticHighlighting",
-          "formatting",
-          "onTypeFormatting",
-          "diagnostics",
-          "codeActions",
-          "codeActionResolve",
-          "documentHighlight",
-          "inlayHints",
-          "completion",
-          "codeLens",
-        },
-      },
-      settings = {
-        formatter = 'auto',
-      },
+      -- init_options = {
+      --   enabledFeatures = {
+      --     "documentSymbol",
+      --     "documentLink",
+      --     "hover",
+      --     "foldingRanges",
+      --     "selectionRanges",
+      --     "semanticHighlighting",
+      --     "formatting",
+      --     "onTypeFormatting",
+      --     "diagnostics",
+      --     "codeActions",
+      --     "codeActionResolve",
+      --     "documentHighlight",
+      --     "inlayHints",
+      --     "completion",
+      --     "codeLens",
+      --   },
+      -- },
+      -- settings = {
+      --   formatter = 'auto',
+      -- },
       filetypes = { 'ruby' },
       on_attach = function(client, buffer)
         ruby_setup_diagnostics(client, buffer)
@@ -160,7 +166,7 @@ return {
 
     -- Rubocop
     vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "ruby",
+      pattern = "*.rb",
       callback = function()
         vim.lsp.buf.format()
       end,
