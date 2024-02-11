@@ -52,7 +52,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'onenord',
+        theme = 'gruvbox_dark',
         component_separators = '|',
         section_separators = '',
       },
