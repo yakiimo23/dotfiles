@@ -62,7 +62,8 @@ return {
         init_options = {
           formatter = "auto",
         }
-      }
+      },
+      tsserver = {},
     }
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -170,6 +171,12 @@ return {
       callback = function()
         vim.lsp.buf.format()
       end,
+    })
+
+    vim.lsp.buf.format({
+      filter = function(client)
+        return client.name ~= 'tsserver'
+      end
     })
   end
 }
