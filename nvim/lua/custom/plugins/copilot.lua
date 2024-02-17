@@ -33,10 +33,10 @@ return {
       debug = true,
       disable_extra_info = 'no',
       prompts = {
-        Explain = "コードの説明",
-        Review = "以下のコードを確認し、簡潔な提案をすること。",
-        Tests = "選択したコードがどのように動作するかを簡単に説明し、ユニットテストを生成する。",
-        Refactor = "明快さと読みやすさを向上させるためにコードをリファクタリングする。",
+        Explain = "コードの説明をして。ORMにはMongoidを使用すること。",
+        Review = "コードのレビューをして。ORMにはMongoidを使用すること。",
+        Tests = "選択したコードがどのように動作するかを簡単に説明し、specを生成する。",
+        Refactor = "明快さと読みやすさを向上させるためにコードをリファクタリングする。過度なメソッド分割は行わないこと。",
       },
     },
     build = function()
@@ -46,6 +46,8 @@ return {
     keys = {
       { "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
       { "<leader>cct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
+      { "<leader>ccr", "<cmd>CopilotChatReview<cr>", desc = "CopilotChat - Review code" },
+      { "<leader>ccf", "<cmd>CopilotChatRefactor<cr>", desc = "CopilotChat - Refactor code" },
       {
         "<leader>cci",
         function ()
@@ -55,6 +57,16 @@ return {
           end
         end,
         desc = "CopilotChat - Ask Copilot",
+      },
+      {
+        "<leader>ccT",
+        "<cmd>CopilotChatVsplitToggle<cr>",
+        desc = "CopilotChat - Toggle Vsplit",
+      },
+      {
+        "<leader>ccc",
+        "<cmd>CopilotChatReset<cr>",
+        desc = "CopilotChat - Reset chat history and clear buffer",
       }
     },
   },
