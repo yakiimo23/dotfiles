@@ -32,11 +32,13 @@ return {
       show_help = "yes",
       debug = true,
       disable_extra_info = 'no',
+      hide_system_prompt = 'yes',
+      language = 'Japanese',
       prompts = {
-        Explain = "コードの説明をして。ORMにはMongoidを使用すること。",
-        Review = "コードのレビューをして。ORMにはMongoidを使用すること。",
-        Tests = "選択したコードがどのように動作するかを簡単に説明し、specを生成する。",
-        Refactor = "明快さと読みやすさを向上させるためにコードをリファクタリングする。過度なメソッド分割は行わないこと。",
+        Explain = "Explain how it works. Use Mongoid as the ORM.",
+        Review = "Review the following code and provide concise suggestions. Use Mongoid as the ORM.",
+        Tests = "Briefly explain how the selected code works, then generate spec. Use Mongoid as the ORM. Use fabrication for factories.",
+        Refactor = "Refactor the code to improve clarity and readability.",
       },
     },
     build = function()
@@ -67,7 +69,29 @@ return {
         "<leader>ccc",
         "<cmd>CopilotChatReset<cr>",
         desc = "CopilotChat - Reset chat history and clear buffer",
-      }
+      },
+      -- Show help actions with telescope
+      {
+        "<leader>cch",
+        function()
+          require("CopilotChat.code_actions").show_help_actions()
+        end,
+        desc = "CopilotChat - Help actions",
+      },
+      -- Show prompts actions with telescope
+      {
+        "<leader>ccp",
+        function()
+          require("CopilotChat.code_actions").show_prompt_actions()
+        end,
+        desc = "CopilotChat - Help actions",
+      },
+      {
+        "<leader>ccp",
+        ":lua require('CopilotChat.code_actions').show_prompt_actions(true)<CR>",
+        mode = "x",
+        desc = "CopilotChat - Prompt actions",
+      },
     },
   },
 }
