@@ -3,17 +3,30 @@ if vim.g.vscode then
 end
 
 return {
-  'ellisonleao/gruvbox.nvim',
+  'folke/tokyonight.nvim',
+  lazy = false,
   priority = 1000,
   config = function()
-    require("gruvbox").setup({
-      terminal_colors = true,
+    require('tokyonight').setup({
+      style = 'night'
     })
 
-    vim.o.background = "dark"
-    vim.cmd([[colorscheme gruvbox]])
+    vim.cmd([[colorscheme tokyonight]])
   end
 }
+
+-- return {
+--   'ellisonleao/gruvbox.nvim',
+--   priority = 1000,
+--   config = function()
+--     require("gruvbox").setup({
+--       terminal_colors = true,
+--     })
+--
+--     vim.o.background = "dark"
+--     vim.cmd([[colorscheme gruvbox]])
+--   end
+-- }
 
 -- return {
 --   'rmehri01/onenord.nvim',
