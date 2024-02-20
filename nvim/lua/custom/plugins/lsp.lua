@@ -58,11 +58,11 @@ return {
         },
       },
       rubocop = {},
-      ruby_ls = {
-        init_options = {
-          formatter = "auto",
-        }
-      },
+      -- ruby_ls = {
+      --   init_options = {
+      --     formatter = "auto",
+      --   }
+      -- },
       tsserver = {},
     }
 
@@ -88,76 +88,76 @@ return {
       end
     }
 
-    local _timers = {}
-    local ruby_setup_diagnostics = function(client, buffer)
-      if require("vim.lsp.diagnostic")._enable then
-        return
-      end
-
-      local diagnostic_handler = function()
-        local params = vim.lsp.util.make_text_document_params(buffer)
-        client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
-          if err then
-            local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
-            vim.lsp.log.error(err_msg)
-          end
-          if not result then
-            return
-          end
-          vim.lsp.diagnostic.on_publish_diagnostics(
-            nil,
-            vim.tbl_extend("keep", params, { diagnostics = result.items }),
-            { client_id = client.id }
-          )
-        end)
-      end
-
-      diagnostic_handler() -- to request diagnostics on buffer when first attaching
-
-      vim.api.nvim_buf_attach(buffer, false, {
-        on_lines = function()
-          if _timers[buffer] then
-            vim.fn.timer_stop(_timers[buffer])
-          end
-          _timers[buffer] = vim.fn.timer_start(200, diagnostic_handler)
-        end,
-        on_detach = function()
-          if _timers[buffer] then
-            vim.fn.timer_stop(_timers[buffer])
-          end
-        end,
-      })
-    end
-
-    require('lspconfig').ruby_ls.setup({
-      capabilities = capabilities,
-      -- init_options = {
-      --   enabledFeatures = {
-      --     "documentSymbol",
-      --     "documentLink",
-      --     "hover",
-      --     "foldingRanges",
-      --     "selectionRanges",
-      --     "semanticHighlighting",
-      --     "formatting",
-      --     "onTypeFormatting",
-      --     "diagnostics",
-      --     "codeActions",
-      --     "codeActionResolve",
-      --     "documentHighlight",
-      --     "inlayHints",
-      --     "completion",
-      --     "codeLens",
-      --   },
-      -- },
-      -- settings = {
-      --   formatter = 'auto',
-      -- },
-      filetypes = { 'ruby' },
-      on_attach = function(client, buffer)
-        ruby_setup_diagnostics(client, buffer)
-      end,
-    })
+    -- local _timers = {}
+    -- local ruby_setup_diagnostics = function(client, buffer)
+    --   if require("vim.lsp.diagnostic")._enable then
+    --     return
+    --   end
+    --
+    --   local diagnostic_handler = function()
+    --     local params = vim.lsp.util.make_text_document_params(buffer)
+    --     client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
+    --       if err then
+    --         local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
+    --         vim.lsp.log.error(err_msg)
+    --       end
+    --       if not result then
+    --         return
+    --       end
+    --       vim.lsp.diagnostic.on_publish_diagnostics(
+    --         nil,
+    --         vim.tbl_extend("keep", params, { diagnostics = result.items }),
+    --         { client_id = client.id }
+    --       )
+    --     end)
+    --   end
+    --
+    --   diagnostic_handler() -- to request diagnostics on buffer when first attaching
+    --
+    --   vim.api.nvim_buf_attach(buffer, false, {
+    --     on_lines = function()
+    --       if _timers[buffer] then
+    --         vim.fn.timer_stop(_timers[buffer])
+    --       end
+    --       _timers[buffer] = vim.fn.timer_start(200, diagnostic_handler)
+    --     end,
+    --     on_detach = function()
+    --       if _timers[buffer] then
+    --         vim.fn.timer_stop(_timers[buffer])
+    --       end
+    --     end,
+    --   })
+    -- end
+    --
+    -- require('lspconfig').ruby_ls.setup({
+    --   capabilities = capabilities,
+    --   init_options = {
+    --     enabledFeatures = {
+    --       "documentSymbol",
+    --       "documentLink",
+    --       "hover",
+    --       "foldingRanges",
+    --       "selectionRanges",
+    --       "semanticHighlighting",
+    --       "formatting",
+    --       "onTypeFormatting",
+    --       "diagnostics",
+    --       "codeActions",
+    --       "codeActionResolve",
+    --       "documentHighlight",
+    --       "inlayHints",
+    --       "completion",
+    --       "codeLens",
+    --     },
+    --   },
+    --   settings = {
+    --     formatter = 'auto',
+    --   },
+    --   filetypes = { 'ruby' },
+    --   on_attach = function(client, buffer)
+    --     ruby_setup_diagnostics(client, buffer)
+    --   end,
+    -- })
 
     require('lspconfig').typos_lsp.setup({
       init_options = {
