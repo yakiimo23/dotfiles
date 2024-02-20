@@ -1,8 +1,0 @@
-{
-  "flagWords": [], 
-  "dictionaries": ["ruby"],
-  "version": "0.1", 
-  "words": ["nvim", "cword", "pcall"], 
-  "language": "en", 
-  "ignorePaths": ["node_modules/**", "build/**"]
-}
