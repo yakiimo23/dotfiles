@@ -5,17 +5,17 @@ return {
     event = 'InsertEnter',
     config = function ()
       require('copilot').setup({
-        -- suggestion = { enabled = false },
-        -- panel = { enabled = false },
-        suggestion = {
-          accept = false,
-          auto_trigger = true,
-        },
-        filetypes = {
-          markdown = true,
-          gitcommit = true,
-          yaml = true,
-        }
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+        -- suggestion = {
+        --   accept = false,
+        --   auto_trigger = true,
+        -- },
+        -- filetypes = {
+        --   markdown = true,
+        --   gitcommit = true,
+        --   yaml = true,
+        -- }
       })
     end
   },

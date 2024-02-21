@@ -58,17 +58,22 @@ return {
           select = true,
         },
         ['<Tab>'] = cmp.mapping(function(fallback)
-          if require('copilot.suggestion').is_visible() then
-            require('copilot.suggestion').accept()
-          elseif cmp.visible() then
-            cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-          elseif luasnip.expandable() then
-            luasnip.expand()
-          elseif has_words_before() then
-            cmp.complete()
+          if cmp.visible() and has_words_before() then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           else
             fallback()
           end
+          -- if require('copilot.suggestion').is_visible() then
+          --   require('copilot.suggestion').accept()
+          -- elseif cmp.visible() then
+          --   cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+          -- elseif luasnip.expandable() then
+          --   luasnip.expand()
+          -- elseif has_words_before() then
+          --   cmp.complete()
+          -- else
+          --   fallback()
+          -- end
         end, {
           'i',
           's',
@@ -87,20 +92,25 @@ return {
       },
       formatting = {
         format = lspkind.cmp_format({
-          with_text = true,
-          menu = {
-            buffer = "[Buffer]",
-            nvim_lsp = "[LSP]",
-            luasnip = "[LuaSnip]",
-            nvim_lua = "[Lua]",
-            path = "[Path]",
-            spell = "[Spell]",
-            cmdline = "[Cmdline]",
+          mode = 'symbol_text',
+          max_width = 50,
+          symbol_map = {
+            Copilot = ""
           },
+          -- with_text = true,
+          -- menu = {
+          --   buffer = "[Buffer]",
+          --   nvim_lsp = "[LSP]",
+          --   luasnip = "[LuaSnip]",
+          --   nvim_lua = "[Lua]",
+          --   path = "[Path]",
+          --   spell = "[Spell]",
+          --   cmdline = "[Cmdline]",
+          -- },
         }),
       },
       sources = cmp.config.sources({
-        -- { name = 'copilot' },
+        { name = 'copilot' },
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
         -- { name = 'spell' },
