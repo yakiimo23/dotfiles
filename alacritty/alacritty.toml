@@ -10,7 +10,7 @@ WINIT_X11_SCALE_FACTOR = "1.0"
 option_as_alt = "Both"
 
 [font]
-normal = { family = "FiraMono Nerd Font Mono", style = "Regular" }
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 size = 16.0
 
 [mouse]
