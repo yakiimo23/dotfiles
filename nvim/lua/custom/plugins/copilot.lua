@@ -51,14 +51,24 @@ return {
       { "<leader>ccr", "<cmd>CopilotChatReview<cr>", desc = "CopilotChat - Review code" },
       { "<leader>ccf", "<cmd>CopilotChatRefactor<cr>", desc = "CopilotChat - Refactor code" },
       {
-        "<leader>ccq",
+        "<leader>cci",
         function ()
           local input = vim.fn.input("Quick Chat: ")
+          if input ~= "" then
+            vim.cmd("CopilotChat " .. input)
+          end
+        end,
+        desc = "CopilotChat - Quick chat",
+      },
+      {
+        "<leader>ccb",
+        function ()
+          local input = vim.fn.input("Buffer Chat: ")
           if input ~= "" then
             vim.cmd("CopilotChatBuffer " .. input)
           end
         end,
-        desc = "CopilotChat - Quick chat",
+        desc = "CopilotChat - Buffer chat",
       },
       {
         "<leader>ccT",
