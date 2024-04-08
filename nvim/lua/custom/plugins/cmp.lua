@@ -113,6 +113,7 @@ return {
         { name = 'copilot' },
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
+        { name = 'buffer' },
         -- { name = 'spell' },
       }, {
         { name = 'buffer' },
