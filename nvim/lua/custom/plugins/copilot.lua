@@ -44,6 +44,21 @@ return {
           end
         end,
         desc = "CopilotChat - Quick chat",
+      },
+      {
+        "<leader>cci",
+        function()
+          local input = vim.fn.input("Ask Copilot: ")
+          if input ~= "" then
+            require("CopilotChat").ask(input)
+          end
+        end,
+        desc = "CopilotChat - Ask input",
+      },
+      {
+        "<leader>cct",
+        "<cmd>CopilotChatToggle<cr>",
+        desc = "CopilotChat - Toggle",
       }
     }
   },
