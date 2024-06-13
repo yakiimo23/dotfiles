@@ -57,34 +57,13 @@ return {
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,
         },
-        ['<Tab>'] = cmp.mapping(function(fallback)
+        ["<Tab>"] = vim.schedule_wrap(function(fallback)
           if cmp.visible() and has_words_before() then
             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           else
             fallback()
           end
-          -- if require('copilot.suggestion').is_visible() then
-          --   require('copilot.suggestion').accept()
-          -- elseif cmp.visible() then
-          --   cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-          -- elseif luasnip.expandable() then
-          --   luasnip.expand()
-          -- elseif has_words_before() then
-          --   cmp.complete()
-          -- else
-          --   fallback()
-          -- end
-        end, {
-          'i',
-          's',
-        }),
-        -- ['<Tab>'] = vim.schedule_wrap(function(fallback)
-        --   if cmp.visible() and has_words_before() then
-        --     cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-        --   else
-        --     fallback()
-        --   end
-        -- end),
+        end),
       },
       window = {
         completion = cmp.config.window.bordered(),
@@ -118,6 +97,22 @@ return {
       }, {
         { name = 'buffer' },
       }),
+      sorting = {
+        priority_weight = 2,
+        comparators = {
+          require("copilot_cmp.comparators").prioritize,
+
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.locality,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
     }
 
     cmp.setup.cmdline({ '/', '?' }, {

@@ -9,6 +9,9 @@ return {
     'folke/neodev.nvim',
   },
   config = function()
+    require('mason').setup()
+    local lspconfig = require('lspconfig')
+
     local on_attach = function(_, bufnr)
       local nmap = function(keys, func, desc)
         if desc then
@@ -48,9 +51,9 @@ return {
 
     local servers = {
       -- rust_analyzer = {},
-      solargraph = {
-        filetypes = { 'ruby' },
-      },
+      -- solargraph = {
+      --   filetypes = { 'ruby' },
+      -- },
       lua_ls = {
         Lua = {
           workspace = { checkThirdParty = false },
@@ -58,17 +61,14 @@ return {
         },
       },
       rubocop = {},
-      -- ruby_ls = {
-      --   init_options = {
-      --     formatter = "auto",
-      --   }
-      -- },
+      ruby_lsp = {},
       tsserver = {},
     }
 
     -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     -- Ensure the servers above are installed
     local mason_lspconfig = require 'mason-lspconfig'
@@ -79,7 +79,7 @@ return {
 
     mason_lspconfig.setup_handlers {
       function(server_name)
-        require('lspconfig')[server_name].setup {
+        lspconfig[server_name].setup {
           capabilities = capabilities,
           on_attach = on_attach,
           settings = servers[server_name],
@@ -88,78 +88,7 @@ return {
       end
     }
 
-    -- local _timers = {}
-    -- local ruby_setup_diagnostics = function(client, buffer)
-    --   if require("vim.lsp.diagnostic")._enable then
-    --     return
-    --   end
-    --
-    --   local diagnostic_handler = function()
-    --     local params = vim.lsp.util.make_text_document_params(buffer)
-    --     client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
-    --       if err then
-    --         local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
-    --         vim.lsp.log.error(err_msg)
-    --       end
-    --       if not result then
-    --         return
-    --       end
-    --       vim.lsp.diagnostic.on_publish_diagnostics(
-    --         nil,
-    --         vim.tbl_extend("keep", params, { diagnostics = result.items }),
-    --         { client_id = client.id }
-    --       )
-    --     end)
-    --   end
-    --
-    --   diagnostic_handler() -- to request diagnostics on buffer when first attaching
-    --
-    --   vim.api.nvim_buf_attach(buffer, false, {
-    --     on_lines = function()
-    --       if _timers[buffer] then
-    --         vim.fn.timer_stop(_timers[buffer])
-    --       end
-    --       _timers[buffer] = vim.fn.timer_start(200, diagnostic_handler)
-    --     end,
-    --     on_detach = function()
-    --       if _timers[buffer] then
-    --         vim.fn.timer_stop(_timers[buffer])
-    --       end
-    --     end,
-    --   })
-    -- end
-    --
-    -- require('lspconfig').ruby_ls.setup({
-    --   capabilities = capabilities,
-    --   init_options = {
-    --     enabledFeatures = {
-    --       "documentSymbol",
-    --       "documentLink",
-    --       "hover",
-    --       "foldingRanges",
-    --       "selectionRanges",
-    --       "semanticHighlighting",
-    --       "formatting",
-    --       "onTypeFormatting",
-    --       "diagnostics",
-    --       "codeActions",
-    --       "codeActionResolve",
-    --       "documentHighlight",
-    --       "inlayHints",
-    --       "completion",
-    --       "codeLens",
-    --     },
-    --   },
-    --   settings = {
-    --     formatter = 'auto',
-    --   },
-    --   filetypes = { 'ruby' },
-    --   on_attach = function(client, buffer)
-    --     ruby_setup_diagnostics(client, buffer)
-    --   end,
-    -- })
-
-    require('lspconfig').typos_lsp.setup({
+    lspconfig.typos_lsp.setup({
       init_options = {
         config = '~/.config/nvim/spell/.typos.toml',
       },
@@ -178,5 +107,48 @@ return {
         return client.name ~= 'tsserver'
       end
     })
+
+    -- Ruby LSP
+    -- local function add_ruby_deps_command(client, bufnr)
+    --   vim.api.nvim_buf_create_user_command(bufnr, "ShowRubyDeps", function(opts)
+    --     local params = vim.lsp.util.make_text_document_params()
+    --     local showAll = opts.args == "all"
+    --
+    --     client.request("rubyLsp/workspace/dependencies", params, function(error, result)
+    --       if error then
+    --         print("Error showing deps: " .. error)
+    --         return
+    --       end
+    --
+    --       local qf_list = {}
+    --       for _, item in ipairs(result) do
+    --         if showAll or item.dependency then
+    --           table.insert(qf_list, {
+    --             text = string.format("%s (%s) - %s", item.name, item.version, item.dependency),
+    --             filename = item.path
+    --           })
+    --         end
+    --       end
+    --
+    --       vim.fn.setqflist(qf_list)
+    --       vim.cmd('copen')
+    --     end, bufnr)
+    --   end,
+    --   {nargs = "?", complete = function() return {"all"} end})
+    -- end
+    --
+    -- -- local util = require 'lspconfig.util'
+    -- lspconfig.ruby_lsp.setup({
+    --   -- cmd = { "ruby-lsp" },
+    --   -- filetypes = { "ruby" },
+    --   -- root_dir = util.root_pattern("Gemfile", ".git"),
+    --   -- init_options = {
+    --   --   formatter = 'auto',
+    --   -- },
+    --   -- single_file_support = true,
+    --   on_attach = function(client, buffer)
+    --     add_ruby_deps_command(client, buffer)
+    --   end,
+    -- })
   end
 }
