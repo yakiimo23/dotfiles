@@ -63,11 +63,11 @@ return {
         selection = select.diagnostics,
       },
       Commit = {
-        prompt = "コミットメッセージを commitizen convention に従って書いてください。タイトルは最大50文字、本文は72文字で折り返してください。全体を gitcommit 言語のコードブロックで囲んでください。",
+        prompt = "コミットメッセージを commitizen convention に従って書いてください。タイトルは最大50文字、本文は72文字で折り返してください。全体を gitcommit 言語のコードブロックで囲んでください。タイトルは英語、本文は日本語で書いてください。",
         selection = select.gitdiff,
       },
       CommitStaged = {
-        prompt = "コミットメッセージを commitizen convention に従って書いてください。タイトルは最大50文字、本文は72文字で折り返してください。全体を gitcommit 言語のコードブロックで囲んでください。",
+        prompt = "コミットメッセージを commitizen convention に従って書いてください。タイトルは最大50文字、本文は72文字で折り返してください。全体を gitcommit 言語のコードブロックで囲んでください。タイトルは英語、本文は日本語で書いてください。",
         selection = function(source)
           return select.gitdiff(source, true)
         end,
