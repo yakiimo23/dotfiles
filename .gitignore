@@ -1,3 +1,5 @@
 /nvim/autoload/
 /nvim/colors/
 /nvim/plugin/packer_compiled.lua
+nvim/lazy-lock.json
+.DS_Store
