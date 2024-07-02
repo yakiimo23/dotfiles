@@ -105,6 +105,8 @@ return {
       extensions = {
         fzf = {
           fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
           case_mode = "ignore_case",
         },
         live_grep_args = {
@@ -118,6 +120,16 @@ return {
               ["<C-o>"] = lga_actions.quote_prompt({ postfix = " --iglob !lib/tasks/oneshot/**" }),
             },
           },
+        },
+      },
+      pickers = {
+        find_files = {
+          find_command = { "rg", "--files", "--ignore-case" },
+          sorter = require("telescope.sorters").get_fuzzy_file(),
+        },
+        git_files = {
+          find_command = { "rg", "--files", "--ignore-case" },
+          sorter = require("telescope.sorters").get_fuzzy_file(),
         },
       },
     }
