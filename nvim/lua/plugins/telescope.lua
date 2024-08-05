@@ -46,17 +46,34 @@ return {
   opts = function()
     local actions = require("telescope.actions")
 
-    local open_with_trouble = require("trouble.sources.telescope").open
+    local open_with_trouble = function(...)
+      return require("trouble.sources.telescope").open(...)
+    end
     local find_files_no_ignore = function()
       local action_state = require("telescope.actions.state")
       local line = action_state.get_current_line()
-      LazyVim.telescope("find_files", { no_ignore = true, default_text = line })()
+      LazyVim.pick("find_files", { no_ignore = true, default_text = line })()
     end
     local find_files_with_hidden = function()
       local action_state = require("telescope.actions.state")
       local line = action_state.get_current_line()
-      LazyVim.telescope("find_files", { hidden = true, default_text = line })()
+      LazyVim.pick("find_files", { hidden = true, default_text = line })()
     end
+
+    local function find_command()
+      if 1 == vim.fn.executable("rg") then
+        return { "rg", "--files", "--color", "never", "-g", "!.git", "--ignore-case" }
+      elseif 1 == vim.fn.executable("fd") then
+        return { "fd", "--type", "f", "--color", "never", "-E", ".git" }
+      elseif 1 == vim.fn.executable("fdfind") then
+        return { "fdfind", "--type", "f", "--color", "never", "-E", ".git" }
+      elseif 1 == vim.fn.executable("find") and vim.fn.has("win32") == 0 then
+        return { "find", ".", "-type", "f" }
+      elseif 1 == vim.fn.executable("where") then
+        return { "where", "/r", ".", "*" }
+      end
+    end
+
     local lga_actions = require("telescope-live-grep-args.actions")
     pcall(require("telescope").load_extension, "fzf")
 
@@ -88,7 +105,7 @@ return {
         },
         mappings = {
           i = {
-            ["<c-t>"] = open_with_trouble,
+            -- ["<c-t>"] = open_with_trouble,
             ["<a-t>"] = open_with_trouble,
             ["<a-i>"] = find_files_no_ignore,
             ["<a-h>"] = find_files_with_hidden,
@@ -124,8 +141,8 @@ return {
       },
       pickers = {
         find_files = {
-          find_command = { "rg", "--files", "--ignore-case" },
-          sorter = require("telescope.sorters").get_fuzzy_file(),
+          find_command = find_command,
+          hidden = true,
         },
         git_files = {
           find_command = { "rg", "--files", "--ignore-case" },
