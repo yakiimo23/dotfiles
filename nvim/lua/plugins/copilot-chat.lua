@@ -3,6 +3,7 @@ local select = require("CopilotChat.select")
 return {
   "CopilotC-Nvim/CopilotChat.nvim",
   opts = {
+    model = "gpt-4o",
     prompts = {
       Explain = {
         prompt = "/COPILOT_EXPLAIN 選択されているアクティブなテキストに対する説明を段落形式で書いてください。",
