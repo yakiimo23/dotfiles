@@ -1,78 +1,55 @@
-local select = require("CopilotChat.select")
-
 return {
   "CopilotC-Nvim/CopilotChat.nvim",
-  opts = {
-    model = "gpt-4o",
-    prompts = {
-      Explain = {
-        prompt = "/COPILOT_EXPLAIN 選択されているアクティブなテキストに対する説明を段落形式で書いてください。",
+  opts = function()
+    local user = vim.env.USER or "User"
+    user = user:sub(1, 1):upper() .. user:sub(2)
+    return {
+      model = "gpt-4o",
+      auto_insert_mode = true,
+      show_help = true,
+      question_header = "  " .. user .. " ",
+      answer_header = "  Copilot ",
+      window = {
+        width = 0.4,
       },
-      Review = {
-        prompt = "/COPILOT_REVIEW 選択されたコードをレビューしてください。",
-        callback = function(response, source)
-          local ns = vim.api.nvim_create_namespace("copilot_review")
-          local diagnostics = {}
-          for line in response:gmatch("[^\r\n]+") do
-            if line:find("^line=") then
-              local start_line = nil
-              local end_line = nil
-              local message = nil
-              local single_match, message_match = line:match("^line=(%d+): (.*)$")
-              if not single_match then
-                local start_match, end_match, m_message_match = line:match("^line=(%d+)-(%d+): (.*)$")
-                if start_match and end_match then
-                  start_line = tonumber(start_match)
-                  end_line = tonumber(end_match)
-                  message = m_message_match
-                end
-              else
-                start_line = tonumber(single_match)
-                end_line = start_line
-                message = message_match
-              end
-
-              if start_line and end_line then
-                table.insert(diagnostics, {
-                  lnum = start_line - 1,
-                  end_lnum = end_line - 1,
-                  col = 0,
-                  message = message,
-                  severity = vim.diagnostic.severity.WARN,
-                  source = "Copilot Review",
-                })
-              end
-            end
-          end
-          vim.diagnostic.set(ns, source.bufnr, diagnostics)
-        end,
+      selection = function(source)
+        local select = require("CopilotChat.select")
+        return select.visual(source) or select.buffer(source)
+      end,
+      prompts = {
+        Explain = {
+          prompt = "/COPILOT_EXPLAIN 選択したコードを日本語で説明してください。",
+        },
+        Review = {
+          prompt = "/COPILOT_REVIEW 選択したコードを日本語でレビューしてください。",
+        },
+        Fix = {
+          prompt = "/COPILOT_FIX このコードには問題があります。バグを修正したコードを表示してください。説明は日本語でお願いします。",
+        },
+        Optimize = {
+          prompt = "/COPILOT_REFACTOR 選択したコードを最適化し、パフォーマンスと可読性を向上させてください。説明は日本語でお願いします。",
+        },
+        Docs = {
+          prompt = "/COPILOT_GENERATE 選択したコードに関するドキュメントコメントを日本語で生成してください。",
+        },
+        Tests = {
+          prompt = "/COPILOT_TESTS 選択したコードの詳細なユニットテストを書いてください。説明は日本語でお願いします。",
+        },
+        FixDiagnostic = {
+          prompt = "コードの診断結果に従って問題を修正してください。修正内容の説明は日本語でお願いします。",
+          selection = require("CopilotChat.select").diagnostics,
+        },
+        Commit = {
+          prompt = "commitizeの規則に従って、変更に対するコミットメッセージを日本語で記述してください。タイトルは最大50文字で、メッセージは72文字で折り返されるようにしてください。メッセージ全体をgitcommit言語のコードブロックでラップしてください。",
+          selection = require("CopilotChat.select").gitdiff,
+        },
+        CommitStaged = {
+          prompt = "commitizeの規則に従って、ステージ済みの変更に対するコミットメッセージを日本語で記述してください。タイトルは最大50文字で、メッセージは72文字で折り返されるようにしてください。メッセージ全体をgitcommit言語のコードブロックでラップしてください。",
+          selection = function(source)
+            return require("CopilotChat.select").gitdiff(source, true)
+          end,
+        },
       },
-      Fix = {
-        prompt = "/COPILOT_GENERATE このコードには問題があります。バグを修正してコードを書き直してください。",
-      },
-      Optimize = {
-        prompt = "/COPILOT_GENERATE 選択されたコードを最適化して、パフォーマンスと可読性を向上させてください。",
-      },
-      Docs = {
-        prompt = "/COPILOT_GENERATE 選択箇所にドキュメントコメントを追加してください。",
-      },
-      Tests = {
-        prompt = "/COPILOT_GENERATE 私のコードのテストを生成してください。",
-      },
-      FixDiagnostic = {
-        prompt = "以下のファイルの diagnostic issue について支援してください。",
-        selection = select.diagnostics,
-      },
-      Commit = {
-        prompt = "コミットメッセージを commitizen convention に従って書いてください。タイトルは最大50文字、本文は72文字で折り返してください。全体を gitcommit 言語のコードブロックで囲んでください。タイトルは英語、本文は日本語で書いてください。",
-        selection = select.gitdiff,
-      },
-      CommitStaged = {
-        prompt = "コミットメッセージを commitizen convention に従って書いてください。タイトルは最大50文字、本文は72文字で折り返してください。全体を gitcommit 言語のコードブロックで囲んでください。タイトルは英語、本文は日本語で書いてください。",
-        selection = function(source)
-          return select.gitdiff(source, true)
-        end,
-      },
-    },
-  },
+    }
+  end,
 }
