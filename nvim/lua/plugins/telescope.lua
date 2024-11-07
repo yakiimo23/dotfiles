@@ -31,6 +31,7 @@ return {
     },
   },
   keys = {
+    { "<leader><space>", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
     {
       "<leader>/",
       ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
