@@ -19,4 +19,7 @@ config.key_tables = require("keybinds").key_tables
 -- status bar
 config.status_update_interval = 1000
 
+-- scrollback
+config.scrollback_lines = 10000
+
 return config
