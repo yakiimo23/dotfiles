@@ -9,7 +9,7 @@ config.color_scheme = "tokyonight"
 
 -- font
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular" })
-config.font_size = 20.0
+config.font_size = 18.0
 
 -- key bindings
 config.leader = { key = "s", mods = "CTRL", timeout_milliseconds = 2000 }
