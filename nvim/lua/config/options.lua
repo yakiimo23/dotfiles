@@ -6,7 +6,8 @@ local opt = vim.opt
 
 opt.wrap = true
 
-vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_picker = "fzf"
+-- vim.g.lazyvim_picker = "telescope"
 -- vim.g.lazyvim_ruby_lsp = "solargraph"
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 vim.g.lazyvim_ruby_formatter = "rubocop"
