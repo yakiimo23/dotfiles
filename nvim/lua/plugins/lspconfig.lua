@@ -12,6 +12,7 @@ return {
         cmd = { vim.fn.expand("~/.asdf/shims/ruby-lsp") },
       },
       rubocop = {
+        mason = false,
         cmd = { "bundle", "exec", "rubocop", "--lsp" },
       },
       solargraph = {
