@@ -7,3 +7,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.lsp.buf.format()
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    if vim.g.vscode then
+      vim.opt.spell = false
+      -- もし vim.opt.spell = false でもダメなら vim.cmd('set nospell') を試す
+      -- vim.cmd('set nospell')
+    end
+  end,
+})
