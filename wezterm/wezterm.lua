@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 config.color_scheme = "tokyonight"
 
 -- font
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular" })
+config.font = wezterm.font("HackGen Console NF", { weight = "Regular" })
 config.font_size = 22.0
 
 -- key bindings
