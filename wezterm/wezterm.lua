@@ -20,6 +20,6 @@ config.key_tables = require("keybinds").key_tables
 config.status_update_interval = 1000
 
 -- scrollback
-config.scrollback_lines = 10000
+config.scrollback_lines = 50000
 
 return config
