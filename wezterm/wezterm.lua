@@ -7,6 +7,9 @@ local config = wezterm.config_builder()
 -- color scheme
 config.color_scheme = "tokyonight"
 
+-- opacity
+config.window_background_opacity = 0.9
+
 -- font
 config.font = wezterm.font("HackGen Console NF", { weight = "Regular" })
 config.font_size = 22.0
