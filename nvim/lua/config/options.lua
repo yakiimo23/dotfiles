@@ -9,8 +9,10 @@ opt.clipboard = "unnamedplus"
 
 vim.g.lazyvim_picker = "fzf"
 -- vim.g.lazyvim_picker = "telescope"
--- vim.g.lazyvim_ruby_lsp = "solargraph"
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 vim.g.lazyvim_ruby_formatter = "rubocop"
 
 vim.g.snacks_animate = false
+
+-- mise
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
