@@ -13,7 +13,7 @@ vim.keymap.set("i", "<C-b>", "<Left>")
 vim.keymap.set("i", "<C-f>", "<Right>")
 
 -- Copy Relative Path
-vim.keymap.set("n", "rp", ':let @+ = expand("%")<CR>', { desc = "Copy Relative Path" })
+vim.keymap.set("n", "rp", ':let @+ = expand("%:.")<CR>', { desc = "Copy Relative Path" })
 
 -- Run Rspec
 local rspec_path = function()
