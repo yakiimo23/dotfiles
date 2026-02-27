@@ -108,6 +108,9 @@ return {
       },
       files = {
         cwd_prompt = false,
+        fzf_opts = {
+          ["--ignore-case"] = true,
+        },
         actions = {
           ["alt-i"] = { actions.toggle_ignore },
           ["alt-h"] = { actions.toggle_hidden },
