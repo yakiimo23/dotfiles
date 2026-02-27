@@ -10,7 +10,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `init.lua`: エントリーポイント（config.lazyを読み込む）
 - `lua/config/`: 基本設定（autocmds、keymaps、lazy、options）
-- `lua/plugins/`: プラグイン設定（個別ファイルで管理）
+- `lua/plugins/`: プラグイン設定（カテゴリ別サブディレクトリで管理）
+  - `ai/`: AI関連（copilot、copilot-chat、claude-code）
+  - `coding/`: コーディング支援（blink-cmp、lspconfig、luasnip、mason）
+  - `editor/`: エディタ機能（fzf-lua、toggleterm、treesitter-context、bqf、scrollbar）
+  - `git/`: Git連携（gitlinker、gitsigns）
+  - `ui/`: UI（bufferline、cursorline、lualine、noice）
 - `lazy-lock.json`: プラグインバージョンのロックファイル
 - `stylua.toml`: Luaコードのフォーマッター設定
 
@@ -18,9 +23,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### 新しいプラグインの追加方法
 
-1. `lua/plugins/`ディレクトリに新しい`.lua`ファイルを作成
-2. Luaテーブル形式でプラグイン設定を記述（`example.lua`参照）
+1. `lua/plugins/`の適切なサブディレクトリに新しい`.lua`ファイルを作成
+2. Luaテーブル形式でプラグイン設定を記述
 3. Neovimを再起動すると自動的にインストールされる
+
+**注意**: 新しいサブディレクトリを作成した場合、`lua/config/lazy.lua`に`{ import = "plugins.新カテゴリ" }`を追加する必要がある
 
 ### プラグインの更新
 
@@ -52,9 +59,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### 主要なカスタマイズ
 
 - ピッカー: fzf-lua使用（telescope非使用）
-- カラースキーム: everforest
+- カラースキーム: tokyonight（moonスタイル、透過背景）
 - アニメーション: 無効化（パフォーマンス重視）
 - VS Code検出時: スペルチェック自動無効化
+- mise: shimsをPATHに追加（`options.lua`で設定）
+
+## コードスタイル
+
+- Luaファイル: stylua（spaces、indent: 2、column_width: 120）
+- Rubyファイル: 保存時にLSPフォーマット自動実行（autocmds.lua）
+- rubocop: bundler経由で実行（`bundle exec rubocop --lsp`）
 
 ## 設定変更時の注意点
 
