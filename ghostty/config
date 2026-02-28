@@ -1,0 +1,39 @@
+auto-update-channel = tip
+
+# font
+font-family = "HackGen Console NF Regular"
+font-size = 20
+
+macos-non-native-fullscreen = true
+
+# Style
+theme = "TokyoNight"
+background-opacity = 0.85
+background-blur = true
+
+# 非アクティブなスプリットの透過度
+unfocused-split-opacity = 0.7
+
+# ウィンドウ状態を保存（終了時のサイズや位置を記憶）
+window-save-state = always
+
+shell-integration = fish
+
+# スクロールバック行数
+scrollback-limit = 200000
+
+# keybind
+# プロンプト間ジャンプ
+keybind = cmd+up=jump_to_prompt:-1
+keybind = cmd+down=jump_to_prompt:1
+
+keybind = cmd+f=write_scrollback_file:open
+
+# zoom
+keybind = ctrl+s>m=toggle_split_zoom
+
+# navigate split
+keybind = ctrl+s>h=goto_split:left
+keybind = ctrl+s>j=goto_split:down
+keybind = ctrl+s>k=goto_split:up
+keybind = ctrl+s>l=goto_split:right
