@@ -20,14 +20,12 @@ window-save-state = always
 shell-integration = fish
 
 # スクロールバック行数
-scrollback-limit = 200000
+scrollback-limit = 500000
 
 # keybind
 # プロンプト間ジャンプ
 keybind = cmd+up=jump_to_prompt:-1
 keybind = cmd+down=jump_to_prompt:1
-
-keybind = cmd+f=write_scrollback_file:open
 
 # zoom
 keybind = ctrl+s>m=toggle_split_zoom
