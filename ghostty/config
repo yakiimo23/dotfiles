@@ -1,7 +1,7 @@
 auto-update-channel = tip
 
 # font
-font-family = "HackGen Console NF Regular"
+font-family = "JetBrainsMono Nerd Font"
 font-size = 20
 
 macos-non-native-fullscreen = true
@@ -20,7 +20,7 @@ window-save-state = always
 shell-integration = fish
 
 # スクロールバック行数
-scrollback-limit = 500000
+scrollback-limit = 100000000
 
 # keybind
 # プロンプト間ジャンプ
