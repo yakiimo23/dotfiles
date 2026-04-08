@@ -11,13 +11,14 @@ theme = "TokyoNight"
 background-opacity = 0.85
 background-blur = true
 
-# 非アクティブなスプリットの透過度
-unfocused-split-opacity = 0.7
+# 非アクティブなスプリットの透過度（tmux使用時は不要）
+# unfocused-split-opacity = 0.7
 
 # ウィンドウ状態を保存（終了時のサイズや位置を記憶）
 window-save-state = always
 
 shell-integration = fish
+shell-integration-features = sudo,ssh-terminfo,ssh-env
 
 # スクロールバック行数
 scrollback-limit = 100000000
@@ -27,11 +28,11 @@ scrollback-limit = 100000000
 keybind = cmd+up=jump_to_prompt:-1
 keybind = cmd+down=jump_to_prompt:1
 
-# zoom
-keybind = ctrl+s>m=toggle_split_zoom
+# zoom（tmux使用時は不要）
+# keybind = ctrl+s>m=toggle_split_zoom
 
-# navigate split
-keybind = ctrl+s>h=goto_split:left
-keybind = ctrl+s>j=goto_split:down
-keybind = ctrl+s>k=goto_split:up
-keybind = ctrl+s>l=goto_split:right
+# navigate split（tmux使用時は不要）
+# keybind = ctrl+s>h=goto_split:left
+# keybind = ctrl+s>j=goto_split:down
+# keybind = ctrl+s>k=goto_split:up
+# keybind = ctrl+s>l=goto_split:right
