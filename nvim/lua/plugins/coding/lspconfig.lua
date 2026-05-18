@@ -14,6 +14,9 @@ else
           mason = false,
           cmd = { "bundle", "exec", "rubocop", "--lsp" },
         },
+        ruby_lsp = {
+          mason = false,
+        },
       },
     },
   }
