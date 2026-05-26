@@ -16,6 +16,14 @@ else
         },
         ruby_lsp = {
           mason = false,
+          cmd = function(dispatchers, config)
+            local env = vim.fn.environ()
+            env.PATH = vim.fn.expand("~/.local/share/mise/shims") .. ":" .. env.PATH
+            return vim.lsp.rpc.start({ "ruby-lsp" }, dispatchers, {
+              cwd = config.cmd_cwd or config.root_dir,
+              env = env,
+            })
+          end,
         },
       },
     },
