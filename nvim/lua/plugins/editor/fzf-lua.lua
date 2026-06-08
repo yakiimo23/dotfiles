@@ -108,6 +108,8 @@ return {
       },
       files = {
         cwd_prompt = false,
+        hidden = true,
+        no_ignore = true,
         fzf_opts = {
           ["--ignore-case"] = true,
         },
@@ -117,6 +119,8 @@ return {
         },
       },
       grep = {
+        hidden = true,
+        no_ignore = true,
         actions = {
           ["alt-i"] = { actions.toggle_ignore },
           ["alt-h"] = { actions.toggle_hidden },
